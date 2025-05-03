@@ -102,8 +102,9 @@
                     <div
                         class="bg-white rounded-3xl  shadow-lg p-6 flex flex-col hover:shadow-xl transition-shadow duration-300 ease-in-out">
                         <!-- Gambar event -->
-                        <img src="{{ $event->poster ? asset('storage/' . $event->poster) : 'https://via.placeholder.com/400x200' }}"
+                        <img src="{{ $event->poster ? asset('posters/' . $event->poster) : 'https://via.placeholder.com/400x200' }}"
                             alt="{{ $event->title }}" class="rounded-md mb-4 w-full h-48 object-contain">
+
 
                         <!-- Nama event -->
                         <h2 class="text-xl font-semibold text-[#0a3a0d] mb-2 truncate hover:text-[#4B5335]">
