@@ -6,7 +6,7 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-sm">
         <!-- Logo dan Slogan -->
         <div class="flex flex-col items-start space-y-2">
-            <img src="{{ asset('images/logo.png') }}" alt="KoneksiKita Logo" class="w-28" />
+            <img src="{{ asset('images/Logo.png') }}" alt="KoneksiKita Logo" class="w-28" />
             <p class="font-medium">Dari Ide ke Aksi</p>
         </div>
 
