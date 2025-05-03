@@ -6,7 +6,7 @@
     <div class="relative z-10 max-w-6xl mx-auto px-6 py-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-sm">
         <!-- Logo dan Slogan -->
         <div class="flex flex-col items-start space-y-2">
-            <img src="{{ asset('images/logo.png') }}" alt="KoneksiKita Logo" class="w-28" />
+            <img src="{{ asset('images/Logo.png') }}" alt="KoneksiKita Logo" class="w-28" />
             <p class="font-medium">Dari Ide ke Aksi</p>
         </div>
 
@@ -26,9 +26,9 @@
                 <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="text-xs mt-2 leading-relaxed">
-                417 Fifth Avenue, #815, New York, NY 10016<br>
-                081-2345-6789<br>
-                dummymemail123@gmail.com
+                Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231<br>
+                0811-3278-005<br>
+                https://surabaya.telkomuniversity.ac.id/
             </p>
         </div>
     </div>
