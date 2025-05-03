@@ -26,9 +26,9 @@
                 <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
             </div>
             <p class="text-xs mt-2 leading-relaxed">
-                417 Fifth Avenue, #815, New York, NY 10016<br>
-                081-2345-6789<br>
-                dummymemail123@gmail.com
+                Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231<br>
+                0811-3278-005<br>
+                https://surabaya.telkomuniversity.ac.id/
             </p>
         </div>
     </div>
