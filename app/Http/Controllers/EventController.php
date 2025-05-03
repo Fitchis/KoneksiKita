@@ -56,9 +56,15 @@ class EventController extends Controller
             'proposal' => 'nullable|file|mimes:pdf,doc,docx|max:5120',
         ]);
 
-        // Upload poster
+        // Upload poster langsung ke public/posters/
         if ($request->hasFile('image')) {
-            $validated['poster'] = $request->file('image')->store('posters', 'public');
+            $image = $request->file('image');
+            // Membuat nama file unik
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            // Memindahkan file ke public/posters/
+            $image->move(public_path('posters'), $imageName);
+            // Simpan nama file di database
+            $validated['poster'] = $imageName;
         }
 
         // Upload proposal
@@ -67,14 +73,14 @@ class EventController extends Controller
         }
 
         // Tambahkan user_id dari auth
-        $validated['user_id'] = Auth::id(); // Benar
-
+        $validated['user_id'] = Auth::id();
 
         // Simpan ke database
         Event::create($validated);
 
         return redirect()->route('katalog.event')->with('success', 'Event berhasil diposting!');
     }
+
 
 
     public function edit($id)
