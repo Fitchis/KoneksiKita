@@ -49,7 +49,7 @@
             <div class="lg:col-span-2">
                 <h2 class="text-3xl font-bold text-[#4B5335] mb-4">{{ $event->title }}</h2>
 
-                <img src="{{ $event->poster ? asset('storage/' . $event->poster) : 'https://via.placeholder.com/800x400' }}"
+                 <img src="{{ $event->poster ? asset('posters/' . $event->poster) : 'https://via.placeholder.com/800x400' }}"
                     alt="{{ $event->title }}" class="w-full h-auto max-h-[450px] object-contain rounded-lg mb-6">
             </div>
 
