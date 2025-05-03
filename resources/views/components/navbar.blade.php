@@ -2,7 +2,7 @@
     <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative" aria-label="Primary Navigation">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-            <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-10 h-10 object-contain" />
+            <img src="{{ asset('images/Logo.png') }}" alt="Logo" class="w-10 h-10 object-contain" />
             <div class="text-white text-xs font-semibold leading-tight">
                 <div>Koneksikita</div>
                 <div class="text-[8px] font-normal">Dari Ide ke Aksi</div>
