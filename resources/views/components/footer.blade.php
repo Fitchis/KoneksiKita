@@ -14,10 +14,8 @@
         <div>
             <h4 class="font-semibold mb-2">Navigasi</h4>
             <ul class="space-y-1">
-                <li><a href="#" class="hover:underline">Beranda</a></li>
-                <li><a href="#" class="hover:underline">Event</a></li>
-                <li><a href="#" class="hover:underline">Blog</a></li>
-                <li><a href="#" class="hover:underline">Kontak</a></li>
+                <li><a href="{{ route('welcome') }}" class="hover:underline">Beranda</a></li>
+                <li><a href="{{ route('papan-acara') }}" class="hover:underline">Papan Acara</a></li>
             </ul>
         </div>
 
@@ -25,9 +23,7 @@
         <div class="flex flex-col space-y-3">
             <h4 class="font-semibold">Ikuti Kami</h4>
             <div class="flex space-x-4">
-                <a href="#" class="hover:text-yellow-300"><i class="fab fa-instagram"></i></a>
                 <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
-                <a href="#" class="hover:text-yellow-300"><i class="fab fa-tiktok"></i></a>
             </div>
             <p class="text-xs mt-2 leading-relaxed">
                 417 Fifth Avenue, #815, New York, NY 10016<br>
