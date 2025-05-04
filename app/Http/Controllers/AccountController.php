@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 
 class AccountController extends Controller
 {
@@ -14,6 +15,7 @@ class AccountController extends Controller
         $user = Auth::user();
         return view('akun', compact('user'));
     }
+
     public function update(Request $request)
     {
         /** @var \App\Models\User $user */
@@ -26,12 +28,18 @@ class AccountController extends Controller
                 'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
 
-            // Simpan file foto
-            $path = $request->file('profile_photo')->store('profile_photos', 'public');
-            $user->profile_photo = $path;
+            // Hapus foto lama jika ada
+            if ($user->profile_photo && File::exists(public_path($user->profile_photo))) {
+                File::delete(public_path($user->profile_photo));
+            }
 
+            // Simpan file foto ke public/profile_photos/
+            $profilePhoto = $request->file('profile_photo');
+            $photoName = time() . '.' . $profilePhoto->getClientOriginalExtension();
+            $profilePhoto->move(public_path('profile_photos'), $photoName);
 
-
+            // Simpan nama file foto di database
+            $user->profile_photo = $photoName;
             $user->save();
 
             return back()->with('status', 'Foto profil berhasil diperbarui.');
@@ -43,8 +51,10 @@ class AccountController extends Controller
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
+        // Update nama pengguna
         $user->name = $request->name;
 
+        // Update password jika diisi
         if ($request->filled('password')) {
             $user->password = Hash::make($request->password);
         }
@@ -54,15 +64,19 @@ class AccountController extends Controller
         return back()->with('status', 'Akun berhasil diperbarui.');
     }
 
-
     public function destroy(Request $request)
     {
         /** @var \App\Models\User $user */
         $user = Auth::user();
 
+        // Hapus foto profil jika ada
+        if ($user->profile_photo && File::exists(public_path($user->profile_photo))) {
+            File::delete(public_path($user->profile_photo));
+        }
+
         Auth::logout();
 
-        $user->delete(); // ← Sekarang intelephense nggak protes lagi
+        $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
