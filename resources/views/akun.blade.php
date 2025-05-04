@@ -74,7 +74,7 @@
             <div class="w-60 h-60 mb-6 relative flex items-center justify-center bg-[#00391a] rounded-lg shadow-inner">
                 <!-- Menampilkan foto profil atau inisial jika foto tidak ada -->
                 @if ($user->profile_photo)
-                    <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Foto Profil"
+         <img src="{{ asset('profile_photos/' . $user->profile_photo) }}" alt="Foto Profil"
                         class="w-full h-full object-cover rounded-lg">
                 @else
                     <span class="text-white text-3xl font-bold">
