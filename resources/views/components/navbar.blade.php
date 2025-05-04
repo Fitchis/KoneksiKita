@@ -57,7 +57,7 @@
                 @if ($user->profile_photo)
                     <button onclick="toggleDropdown()" aria-label="Toggle dropdown"
                         class="w-10 h-10 rounded-full overflow-hidden shadow-inner focus:ring-2 focus:ring-white">
-                        <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Avatar"
+                        <img src="{{ asset('profile_photos/' . $user->profile_photo) }}" alt="Avatar"
                             class="w-full h-full object-cover">
                     </button>
                 @else
@@ -138,7 +138,7 @@
                 @if ($user->profile_photo)
                     <button onclick="toggleMobileDropdown()"
                         class="w-10 h-10 rounded-full overflow-hidden shadow-inner focus:ring-2 focus:ring-white">
-                        <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Avatar"
+                        <img src="{{ asset('profile_photos/' . $user->profile_photo) }}" alt="Avatar"
                             class="w-full h-full object-cover">
                     </button>
                 @else
