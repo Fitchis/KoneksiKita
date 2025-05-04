@@ -48,7 +48,7 @@
         <div class="grid md:grid-cols-3 gap-8 items-start">
             <!-- Gambar Sponsor -->
             <div class="md:col-span-2 flex justify-center">
-                <img src="{{ $sponsor->logo ? asset('storage/' . $sponsor->logo) : 'https://via.placeholder.com/800x400' }}"
+                  <img src="{{ $sponsor->logo ? asset('sponsor_logos/' . $sponsor->logo) : 'https://via.placeholder.com/800x400' }}"
                     alt="{{ $sponsor->name }}" class="w-full max-w-2xl h-auto rounded-xl shadow-md">
             </div>
 
