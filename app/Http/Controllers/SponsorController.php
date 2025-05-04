@@ -44,8 +44,10 @@ class SponsorController extends Controller
         $sponsor->description = $validated['description'];
 
         if ($request->hasFile('logo')) {
-            $path = $request->file('logo')->store('sponsor-logos', 'public');
-            $sponsor->logo = $path;
+            $logo = $request->file('logo');
+            $filename = time() . '.' . $logo->getClientOriginalExtension();
+            $logo->move(public_path('sponsor_logos'), $filename);
+            $sponsor->logo = $filename; // hanya nama file, tanpa path
         }
 
         $sponsor->save();

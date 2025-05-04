@@ -105,7 +105,7 @@
         </section>
 
         <!-- Section: partner dan event ideal -->
-        <section class="bg-[#F8F8E9] py-16">
+        <section class="bg-[#EEEDED] py-16">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <!-- Title -->
                 <h2 class="text-2xl md:text-3xl font-extrabold text-[#000] mb-12">
@@ -143,7 +143,7 @@
         </section>
 
         <!-- Section: tabswitch -->
-        <section class="bg-[#F8F8E9] py-16" x-data="{ activeTab: 'mahasiswa' }">
+        <section class="bg-[#EEEDED] py-16" x-data="{ activeTab: 'mahasiswa' }">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <!-- Tab Switcher -->
                 <div class="flex justify-center mb-12">
@@ -412,7 +412,7 @@
         </section>
 
         <!-- Section: Event Board Information -->
-        <section class="bg-[#FFFDE7] py-6 px-4">
+        <section class="bg-[#EEEDED] py-6 px-4">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h3 class="text-2xl font-bold text-[#FFB000] mb-4">Daftar Informasi <span
@@ -531,7 +531,7 @@
         </section>
 
         <!-- Section: Template -->
-        <section class="bg-[#f7f7db] py-16 text-center">
+        <section class="bg-[#EEEDED] py-16 text-center">
             <div class="container mx-auto px-4">
                 <h2 class="text-4xl font-bold text-green-900 mb-6">Butuh Template Proposal Sponsorship</h2>
                 <p class="text-lg text-green-900 mb-8">

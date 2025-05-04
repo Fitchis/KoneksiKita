@@ -74,7 +74,7 @@
             <div class="w-60 h-60 mb-6 relative flex items-center justify-center bg-[#00391a] rounded-lg shadow-inner">
                 <!-- Menampilkan foto profil atau inisial jika foto tidak ada -->
                 @if ($user->profile_photo)
-                    <img src="{{ asset('storage/' . $user->profile_photo) }}" alt="Foto Profil"
+                    <img src="{{ asset('profile_photos/' . $user->profile_photo) }}" alt="Foto Profil"
                         class="w-full h-full object-cover rounded-lg">
                 @else
                     <span class="text-white text-3xl font-bold">
@@ -93,13 +93,11 @@
                     class="w-full text-sm mb-4 file:py-2 file:px-4 file:border-0 file:rounded-full file:bg-[#7bb35a] file:text-white file:cursor-pointer"
                     onchange="previewImage(event)" />
 
-
                 <button type="submit" id="save-button" style="display: none;"
                     class="bg-[#00391a] text-white text-sm px-4 py-2 rounded-full hover:bg-green-800 transition">
                     Simpan Foto
                 </button>
             </form>
-
 
             <!-- Delete Account Section -->
             <div class="w-full text-center mt-10">
@@ -124,30 +122,24 @@
 
     @include('components.footer')
 
-
     <script>
+        // Preview gambar yang diupload
         function previewImage(event) {
             const file = event.target.files[0];
-            const preview = document.getElementById('preview');
+            const reader = new FileReader();
+
+            reader.onload = function() {
+                const preview = document.getElementById('preview');
+                preview.src = reader.result;
+                preview.style.display = 'block'; // Tampilkan preview gambar
+                document.getElementById('save-button').style.display = 'inline-block'; // Tampilkan tombol simpan
+            };
 
             if (file) {
-                const reader = new FileReader();
-                reader.onload = function() {
-                    preview.src = reader.result;
-                    preview.classList.remove('hidden');
-                };
                 reader.readAsDataURL(file);
-
-                // Tampilkan tombol simpan
-                document.getElementById('save-button').style.display = 'inline-block';
-            } else {
-                preview.src = '';
-                preview.classList.add('hidden');
-                document.getElementById('save-button').style.display = 'none';
             }
         }
     </script>
-
 </body>
 
 </html>
