@@ -4,6 +4,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/images/Logo.png" type="image/png">
+
     <title>Koneksi Kita - Kolaborasi Sponsorship & Mahasiswa</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
@@ -92,8 +94,8 @@
                         <label for="jenis-perusahaan" class="block text-[#0a2a0d] mb-1">Pilih Jenis Perusahaan</label>
                         <select id="jenis-perusahaan" name="company_type" class="input-style">
                             <option></option>
-                            <option value="Option 1">Option 1</option>
-                            <option value="Option 2">Option 2</option>
+                            <option value="Option 1">Produk </option>
+                            <option value="Option 2">cash</option>
                         </select>
                     </div>
                     <div class="sm:col-span-2">
