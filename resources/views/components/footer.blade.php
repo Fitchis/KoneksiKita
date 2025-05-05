@@ -19,16 +19,23 @@
             </ul>
         </div>
 
-        <!-- Sosial & Info -->
+             <!-- Sosial & Info -->
         <div class="flex flex-col space-y-3">
             <h4 class="font-semibold">Ikuti Kami</h4>
             <div class="flex space-x-4">
-                <a href="#" class="hover:text-yellow-300"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/628113278005" target="_blank" class="hover:text-yellow-300">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
             </div>
             <p class="text-xs mt-2 leading-relaxed">
-                Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231<br>
-                0811-3278-005<br>
-                https://surabaya.telkomuniversity.ac.id/
+                <a href="https://maps.google.com/?q=Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Surabaya"
+                    target="_blank" class="hover:underline">
+                    Jl. Ketintang No.156, Ketintang, Kec. Gayungan, Surabaya, Jawa Timur 60231
+                </a><br>
+                <a href="tel:08113278005" class="hover:underline">0811-3278-005</a><br>
+                <a href="https://surabaya.telkomuniversity.ac.id/" target="_blank" class="hover:underline">
+                    https://surabaya.telkomuniversity.ac.id/
+                </a>
             </p>
         </div>
     </div>
