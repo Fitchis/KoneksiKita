@@ -6,6 +6,8 @@
     <title>Akun Saya</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="/images/Logo.png" type="image/png">
+
 </head>
 
 <body class="bg-[#f5f6e5] font-sans">
