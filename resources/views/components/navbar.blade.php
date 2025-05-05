@@ -54,6 +54,7 @@
         <div class="relative hidden md:block">
             @auth
                 @php $user = Auth::user(); @endphp
+                <!-- Avatar Button Saat Login -->
                 @if ($user->profile_photo)
                     <button onclick="toggleDropdown()" aria-label="Toggle dropdown"
                         class="w-10 h-10 rounded-full overflow-hidden shadow-inner focus:ring-2 focus:ring-white">
@@ -66,30 +67,31 @@
                         {{ strtoupper($user->name[0]) }}
                     </button>
                 @endif
-            @else
-                <button onclick="toggleDropdown()" aria-label="Toggle menu"
-                    class="w-10 h-10 rounded-full bg-[#CCCCCC] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-400"></button>
-            @endauth
 
-            <!-- Dropdown Menu -->
-            <div id="dropdown-menu"
-                class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 text-sm z-50 transform scale-95 opacity-0 transition-all duration-200 pointer-events-none">
-                @guest
-                    <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Login</a>
-                @else
+                <!-- Dropdown Menu Saat Login -->
+                <div id="dropdown-menu"
+                    class="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg py-2 text-sm z-50 transform scale-95 opacity-0 transition-all duration-200 pointer-events-none">
                     @if ($user->role === 'superadmin')
                         <a href="{{ route('dashboard') }}"
                             class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                     @endif
                     <a href="{{ route('akun') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Akun</a>
-                    <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Setelan</a>
                     <a href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
                         class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Keluar</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">@csrf</form>
-                @endguest
-            </div>
+                </div>
+            @endauth
+
+            @guest
+                <!-- Tombol Login Biasa -->
+                <a href="{{ route('login') }}"
+                    class="px-4 py-2 text-sm text-gray-700 bg-white rounded-xl shadow hover:bg-gray-100">
+                    Login
+                </a>
+            @endguest
         </div>
+
     </nav>
 
     <!-- Mobile Menu -->
@@ -155,7 +157,6 @@
                         class="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded">Dashboard</a>
                 @endif
                 <a href="{{ route('akun') }}" class="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded">Akun</a>
-                <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded">Setelan</a>
                 <a href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form-mobile').submit();"
                     class="block px-4 py-2 text-sm text-white hover:bg-white/10 rounded">

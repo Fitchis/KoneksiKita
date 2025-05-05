@@ -258,140 +258,73 @@
         <!-- Section: package -->
         <section class="bg-[#ffffff] py-16">
             <div class="max-w-7xl mx-auto px-6 text-center">
-                <!-- Title -->
-                <h2 class="text-2xl md:text-3xl font-extrabold text-[#004225] mb-4">
-                    Tentukan Dukunganmu
-                </h2>
-                <p class="text-gray-700 max-w-2xl mx-auto mb-12">
-                    Dapatkan eksposur maksimal, peningkatan interaksi audiens, dan akses ke tools eksklusif untuk
-                    mengoptimalkan kampanye digital Anda.
-                    Setiap paket dirancang untuk mendukung pertumbuhan brand secara efektif dan terukur.
+                <h2 class="text-2xl md:text-3xl font-extrabold text-[#004225] mb-4">Paket Sponsorship</h2>
+                <p class="text-gray-700 max-w-2xl mx-auto mb-12">Tentukan paket dukungan sponsorship sesuai keinginanmu
                 </p>
 
-                <!-- Pricing Cards -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <!-- Silver Package -->
-                    <div
-                        class="bg-[#F5F5DC] rounded-2xl border border-green-300 p-8 shadow-md hover:shadow-lg transition flex flex-col">
-                        <h3 class="text-xl font-bold text-[#004225] mb-2">PAKET <span
-                                class="text-yellow-500">SILVER</span></h3>
-                        <p class="text-gray-600 mb-6 text-sm">Cocok untuk Sponsor yang ingin membangun eksistensi di
-                            kalangan mahasiswa</p>
+                    <x-sponsorship-card title="Silver"
+                        desc="Cocok untuk Sponsor yang ingin membangun eksistensi di kalangan mahasiswa"
+                        :price="100000" :oldPrice="200000" :package="'silver'" :features="[
+                            ['text' => 'Logo Perusahaan ditampilkan', 'included' => true],
+                            ['text' => 'Dedicated Video/Post', 'included' => true],
+                            ['text' => 'Sertifikat Apresiasi', 'included' => true],
+                            ['text' => 'Produk digunakan oleh Panitia/peserta', 'included' => false],
+                            ['text' => 'Exclusive Thank You Post', 'included' => false],
+                            ['text' => 'Mention/Tag di media sosial', 'included' => false],
+                            ['text' => 'Penyebutan nama brand dalam publikasi acara', 'included' => false],
+                            ['text' => 'Penyebutan Brand oleh MC saat acara berlangsung', 'included' => false],
+                        ]" />
 
-                        <hr class="border-green-300 mb-6">
+                    <x-sponsorship-card title="Gold"
+                        desc="Dirancang untuk sponsor yang sedang berkembang dan ingin meningkatkan brand awarenessnya"
+                        :price="150000" :oldPrice="300000" :package="'gold'" :features="[
+                            ['text' => 'Logo Perusahaan ditampilkan', 'included' => true],
+                            ['text' => 'Dedicated Video/Post', 'included' => true],
+                            ['text' => 'Sertifikat Apresiasi', 'included' => true],
+                            ['text' => 'Penyebutan nama brand dalam publikasi acara', 'included' => true],
+                            ['text' => 'Mention/Tag di media sosial', 'included' => true],
+                            ['text' => 'Exclusive Thank You Post', 'included' => false],
+                            ['text' => 'Produk digunakan oleh Panitia/peserta', 'included' => false],
+                            ['text' => 'Penyebutan Brand oleh MC saat acara berlangsung', 'included' => false],
+                        ]" />
 
-                        <div class="mb-6">
-                            <p class="text-red-500 line-through text-sm">Rp. 200.000,-</p>
-                            <p class="text-2xl font-extrabold text-[#004225]">Rp. 100.000,-</p>
-                        </div>
-
-                        <!-- Features -->
-                        <ul class="text-left text-sm space-y-3 mb-8 flex-1">
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Logo
-                                Perusahaan ditampilkan</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Dedicated
-                                Video/Post</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Sertifikat
-                                Apresiasi</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Produk digunakan
-                                oleh Panitia/peserta</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Exclusive Thank
-                                You Post</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Mention/Tag di
-                                media sosial</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Penyebutan nama
-                                brand dalam publikasi acara</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Penyebutan Brand
-                                oleh MC saat acara berlangsung</li>
-                        </ul>
-
-                        <button class="bg-[#85BB65] hover:bg-[#68a268] text-white font-semibold py-3 rounded-xl">
-                            Beli Sekarang
-                        </button>
-                    </div>
-
-                    <!-- Gold Package -->
-                    <div
-                        class="bg-[#F5F5DC] rounded-2xl border border-green-300 p-8 shadow-md hover:shadow-lg transition flex flex-col">
-                        <h3 class="text-xl font-bold text-[#004225] mb-2">PAKET <span
-                                class="text-yellow-400">GOLD</span></h3>
-                        <p class="text-gray-600 mb-6 text-sm">Dirancang untuk sponsor yang sedang berkembang dan ingin
-                            meningkatkan brand awarenessnya</p>
-
-                        <hr class="border-green-300 mb-6">
-
-                        <div class="mb-6">
-                            <p class="text-red-500 line-through text-sm">Rp. 300.000,-</p>
-                            <p class="text-2xl font-extrabold text-[#004225]">Rp. 150.000,-</p>
-                        </div>
-
-                        <!-- Features -->
-                        <ul class="text-left text-sm space-y-3 mb-8 flex-1">
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Logo
-                                Perusahaan ditampilkan</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Dedicated
-                                Video/Post</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Sertifikat
-                                Apresiasi</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Penyebutan
-                                nama brand dalam publikasi acara</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Mention/Tag di
-                                media sosial</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Exclusive Thank
-                                You Post</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Produk digunakan
-                                oleh Panitia/peserta</li>
-                            <li class="flex items-center text-red-500"><span class="mr-2">❌</span> Penyebutan Brand
-                                oleh MC saat acara berlangsung</li>
-                        </ul>
-
-                        <button class="bg-[#85BB65] hover:bg-[#68a268] text-white font-semibold py-3 rounded-xl">
-                            Beli Sekarang
-                        </button>
-                    </div>
-
-                    <!-- Platinum Package -->
-                    <div
-                        class="bg-[#F5F5DC] rounded-2xl border border-green-300 p-8 shadow-md hover:shadow-lg transition flex flex-col">
-                        <h3 class="text-xl font-bold text-[#004225] mb-2">PAKET <span
-                                class="text-yellow-300">PLATINUM</span></h3>
-                        <p class="text-gray-600 mb-6 text-sm">Solusi optimal bagi sponsor yang ingin tampil menonjol
-                            dan memperkuat citra di kalangan mahasiswa</p>
-
-                        <hr class="border-green-300 mb-6">
-
-                        <div class="mb-6">
-                            <p class="text-red-500 line-through text-sm">Rp. 600.000,-</p>
-                            <p class="text-2xl font-extrabold text-[#004225]">Rp. 300.000,-</p>
-                        </div>
-
-                        <!-- Features -->
-                        <ul class="text-left text-sm space-y-3 mb-8 flex-1">
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Logo
-                                Perusahaan ditampilkan</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Dedicated
-                                Video/Post</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Sertifikat
-                                Apresiasi</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Penyebutan
-                                nama brand dalam publikasi acara</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Mention/Tag di
-                                media sosial</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Exclusive
-                                Thank You Post</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Produk
-                                digunakan oleh Panitia/peserta</li>
-                            <li class="flex items-center text-green-600"><span class="mr-2">✔️</span> Penyebutan
-                                Brand oleh MC saat acara berlangsung</li>
-                        </ul>
-
-                        <button class="bg-[#85BB65] hover:bg-[#68a268] text-white font-semibold py-3 rounded-xl">
-                            Beli Sekarang
-                        </button>
-                    </div>
+                    <x-sponsorship-card title="Platinum"
+                        desc="Solusi optimal bagi sponsor yang ingin tampil menonjol dan memperkuat citra di kalangan mahasiswa"
+                        :price="300000" :oldPrice="600000" :package="'platinum'" :features="[
+                            ['text' => 'Logo Perusahaan ditampilkan', 'included' => true],
+                            ['text' => 'Dedicated Video/Post', 'included' => true],
+                            ['text' => 'Sertifikat Apresiasi', 'included' => true],
+                            ['text' => 'Penyebutan nama brand dalam publikasi acara', 'included' => true],
+                            ['text' => 'Mention/Tag di media sosial', 'included' => true],
+                            ['text' => 'Exclusive Thank You Post', 'included' => true],
+                            ['text' => 'Produk digunakan oleh Panitia/peserta', 'included' => true],
+                            ['text' => 'Penyebutan Brand oleh MC saat acara berlangsung', 'included' => true],
+                        ]" />
                 </div>
             </div>
         </section>
+        <!-- Modal -->
+        <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+            <div class="bg-white rounded-xl p-6 w-full max-w-md text-center relative">
+                <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closeModal()">✖</button>
+
+                <h3 id="modal-title" class="text-xl font-bold text-[#004225] mb-2"></h3>
+                <p id="modal-description" class="text-sm mb-4"></p>
+
+                <div class="bg-gray-100 p-2 rounded font-semibold text-[#004225] mb-4">
+                    1234 5678 90 a.n Event Bisnis Digital
+                </div>
+
+                <p class="text-sm mb-4">Setelah melakukan transfer, silakan kirim bukti transfer untuk konfirmasi ke
+                    admin.</p>
+
+                <a href="https://wa.me/6281234567890" target="_blank"
+                    class="bg-[#85BB65] hover:bg-[#68a268] text-white font-bold py-2 px-4 rounded-xl">
+                    Chat Admin
+                </a>
+            </div>
+        </div>
 
         <!-- Section: Sponsorship Contact -->
         <section class="bg-white py-6 px-4">
@@ -545,7 +478,6 @@
                 <p class="mt-6 text-green-900 text-lg">Gratis untuk semua pengguna Koneksi Kita</p>
             </div>
         </section>
-
         <!-- Template Modal -->
         <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
             <div class="bg-[#f7f7db] p-8 rounded-2xl w-full max-w-md relative">
@@ -651,6 +583,39 @@
 
     </main>
     @include('components.footer')
+    <!--  JS Modal package -->
+    <script>
+        window.onload = function() {
+            window.openModal = function(packageName, price) {
+                const formattedPrice = new Intl.NumberFormat('id-ID', {
+                    style: 'currency',
+                    currency: 'IDR',
+                    minimumFractionDigits: 0
+                }).format(price);
+
+                const titleEl = document.getElementById('modal-title');
+                const descEl = document.getElementById('modal-description');
+
+                if (titleEl && descEl) {
+                    titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
+                    descEl.innerText =
+                        `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
+                } else {
+                    console.warn('Elemen modal tidak ditemukan');
+                }
+
+                document.getElementById('modal').classList.remove('hidden');
+            }
+
+            window.closeModal = function() {
+                document.getElementById('modal').classList.add('hidden');
+            }
+
+            function capitalize(str) {
+                return str.charAt(0).toUpperCase() + str.slice(1);
+            }
+        };
+    </script>
 
     <!--  AlpineJS -->
     <script src="//unpkg.com/alpinejs" defer></script>

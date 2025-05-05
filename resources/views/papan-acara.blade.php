@@ -23,7 +23,7 @@
 <body>
     @include('components.navbar')
     {{-- Section: Event Board Intro --}}
-    <section class="bg-[#F5F5DC] py-16 px-6">
+    <section class="bg-[#EEEDED] py-16 px-6">
         <div class="max-w-5xl mx-auto">
             <!-- Box Intro -->
             <div class="w-full rounded-lg bg-white p-6 shadow-md mb-8" style="box-shadow: 0 4px 6px rgb(0 0 0 / 0.1)">
