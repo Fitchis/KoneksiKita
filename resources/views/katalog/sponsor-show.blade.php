@@ -21,7 +21,7 @@
     </style>
 </head>
 
-<body class="bg-[#F5F5DC]">
+<body class="bg-[#EEEDED]">
     @include('components.navbar')
 
     <!-- Breadcrumb -->
@@ -48,9 +48,10 @@
         <div class="grid md:grid-cols-3 gap-8 items-start">
             <!-- Gambar Sponsor -->
             <div class="md:col-span-2 flex justify-center">
-                  <img src="{{ $sponsor->logo ? asset('sponsor_logos/' . $sponsor->logo) : 'https://via.placeholder.com/800x400' }}"
-                    alt="{{ $sponsor->name }}" class="w-full max-w-2xl h-auto rounded-xl shadow-md">
+                <img src="{{ $sponsor->logo ? asset('sponsor_logos/' . $sponsor->logo) : 'https://via.placeholder.com/800x400' }}"
+                    alt="{{ $sponsor->name }}" class="w-3/4 max-w-md h-auto rounded-xl shadow-md">
             </div>
+
 
             <!-- Bagikan Event + Kontak -->
             <div class="space-y-6">
@@ -63,9 +64,6 @@
                         </a>
                         <a href="#" class="flex items-center gap-2 text-gray-700 hover:underline">
                             <i class="fab fa-facebook text-[#3b5998]"></i> Share on Facebook
-                        </a>
-                        <a href="#" class="flex items-center gap-2 text-gray-700 hover:underline">
-                            <i class="fab fa-twitter text-[#1DA1F2]"></i> Share on Twitter / X
                         </a>
                         <a href="#" class="flex items-center gap-2 text-gray-700 hover:underline">
                             <i class="fas fa-link text-[#4B5335]"></i> Copy Link
@@ -106,7 +104,7 @@
                 class="w-full h-64 rounded-2xl border-0" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
-        </div>>
+        </div>
 
         {{-- <!-- Tombol Edit Info Brand -->
         <div class="flex justify-center">

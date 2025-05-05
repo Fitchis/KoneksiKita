@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body class="bg-[#F5F5DC]">
+<body class="bg-[#EEEDED]">
     @include('components.navbar')
     <!-- Breadcrumb -->
     <div class="max-w-5xl mx-auto px-6 pt-10">

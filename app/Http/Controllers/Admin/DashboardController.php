@@ -23,11 +23,11 @@ class DashboardController extends Controller
 
         // Ambil semua data yang diperlukan
         $data = [
-            'totalUsers' => User::count(), // Total users
-            'totalEvents' => Event::count(), // Total events
-            'totalSponsors' => Sponsor::count(), // Total Sponsors
-            'events' => Event::all(), // Semua events
-            'users' => User::all(), // Semua users
+            'totalUsers' => User::count(),
+            'totalEvents' => Event::count(),
+            'totalSponsors' => Sponsor::count(),
+            'events' => Event::all(),
+            'users' => User::all(),
             'sponsors' => Sponsor::all(),
         ];
 

@@ -41,7 +41,7 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => env('APP_URL').'/storage',
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,
@@ -59,6 +59,13 @@ return [
             'throw' => false,
             'report' => false,
         ],
+        'supabase' => [
+            'driver' => 'supabase',
+            'base_url' => env('SUPABASE_STORAGE_URL'),
+            'api_key' => env('SUPABASE_API_KEY'),
+            'bucket' => env('SUPABASE_BUCKET'),
+        ],
+
 
     ],
 

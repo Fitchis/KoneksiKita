@@ -31,11 +31,11 @@
     <section class="relative py-20 bg-cover bg-center"
         style="background-image: url('{{ asset('images/carakerjabg.png') }}')">
         <!-- Overlay semi-transparan -->
-        <div class="absolute inset-0 bg-[#F5F5DC]/60"></div>
+        <div class="absolute inset-0 bg-[#EEEDED]/60"></div>
 
         <!-- Gradient bottom untuk transisi ke section bawah -->
         <div class="absolute bottom-0 left-0 w-full h-32 
-         bg-gradient-to-b from-transparent to-[#F5F5DC]">
+         bg-gradient-to-b from-transparent to-[#EEEDED]">
         </div>
 
         <div class="relative z-10 max-w-xl mx-auto px-6 text-center">
@@ -54,7 +54,7 @@
     </section>
 
     {{-- Section: Eventboard --}}
-    <section class="py-20 bg-[#F5F5DC]">
+    <section class="py-20 bg-[#EEEDED]">
         <div class="max-w-5xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
             <!-- Kiri: Deskripsi -->
             <div class="text-left">
@@ -81,7 +81,7 @@
         </div>
     </section>
     {{-- Section: Connect (Gambar Kiri, Deskripsi Kanan) --}}
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-[#EEEDED]">
         <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 items-center gap-12">
             <!-- Kiri: Gambar -->
             <div class="flex justify-center">
