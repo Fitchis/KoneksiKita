@@ -474,7 +474,7 @@
                     Dapatkan template proposal sponsorship yang profesional dan siap pakai untuk memudahkan Anda
                     mendapatkan sponsor untuk event Anda.
                 </p>
-                <button onclick="openModal()"
+                <button onclick="openTemplateModal()"
                     class="bg-[#85BB65] text-white text-xl font-bold px-10 py-4 rounded-2xl hover:bg-[#71a056] transition">
                     Download Template
                 </button>
