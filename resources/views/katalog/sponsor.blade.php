@@ -104,7 +104,9 @@
                         class="bg-white rounded-3xl shadow-lg p-6 flex flex-col hover:shadow-xl transition-shadow duration-300 ease-in-out">
 
                         <!-- Logo sponsor (Gambar penuh di atas card) -->
+
                         <img src="{{ $sponsor->logo ? (Str::startsWith($sponsor->logo, 'http') ? $sponsor->logo : asset('sponsor_logos/' . $sponsor->logo)) : 'https://via.placeholder.com/400x200?text=Brand' }}"
+
                             alt="{{ $sponsor->name }}" class="rounded-t-lg w-full h-48 object-contain bg-gray-100" />
 
 

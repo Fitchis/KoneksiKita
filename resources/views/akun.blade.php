@@ -131,8 +131,8 @@
             reader.onload = function() {
                 const preview = document.getElementById('preview');
                 preview.src = reader.result;
-                preview.style.display = 'block'; // Tampilkan preview gambar
-                document.getElementById('save-button').style.display = 'inline-block'; // Tampilkan tombol simpan
+                preview.style.display = 'block'; 
+                document.getElementById('save-button').style.display = 'inline-block';
             };
 
             if (file) {
