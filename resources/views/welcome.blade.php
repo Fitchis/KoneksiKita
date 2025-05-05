@@ -306,10 +306,11 @@
                 </div>
             </div>
         </section>
-        <!-- Modal -->
-        <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+           <!-- Modal package-->
+        <div id="packageModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white rounded-xl p-6 w-full max-w-md text-center relative">
-                <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closeModal()">✖</button>
+                <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closePackageModal()">✖</button>
 
                 <h3 id="modal-title" class="text-xl font-bold text-[#004225] mb-2"></h3>
                 <p id="modal-description" class="text-sm mb-4"></p>
@@ -480,8 +481,9 @@
                 <p class="mt-6 text-green-900 text-lg">Gratis untuk semua pengguna Koneksi Kita</p>
             </div>
         </section>
-        <!-- Template Modal -->
-        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+              <!-- Template Modal -->
+        <div id="templateModal"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
             <div class="bg-[#f7f7db] p-8 rounded-2xl w-full max-w-md relative">
                 <p class="text-green-900 text-lg mb-6">
                     Silakan isi data berikut untuk mendapatkan template proposal sponsorship. Link download akan
@@ -516,7 +518,7 @@
                     </div>
 
                     <div class="pt-4 flex justify-end space-x-4">
-                        <button type="button" onclick="closeModal()"
+                        <button type="button" onclick="closeTemplateModal()"
                             class="bg-gray-300 text-black font-semibold text-sm rounded-md px-6 py-3 transition hover:bg-gray-400">
                             Batal
                         </button>
@@ -585,39 +587,6 @@
 
     </main>
     @include('components.footer')
-    <!--  JS Modal package -->
-    <script>
-        window.onload = function() {
-            window.openModal = function(packageName, price) {
-                const formattedPrice = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(price);
-
-                const titleEl = document.getElementById('modal-title');
-                const descEl = document.getElementById('modal-description');
-
-                if (titleEl && descEl) {
-                    titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
-                    descEl.innerText =
-                        `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
-                } else {
-                    console.warn('Elemen modal tidak ditemukan');
-                }
-
-                document.getElementById('modal').classList.remove('hidden');
-            }
-
-            window.closeModal = function() {
-                document.getElementById('modal').classList.add('hidden');
-            }
-
-            function capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1);
-            }
-        };
-    </script>
 
     <!--  AlpineJS -->
     <script src="//unpkg.com/alpinejs" defer></script>
@@ -686,14 +655,43 @@
             },
         });
     </script>
-    <!-- Modal Script -->
-    <script>
-        function openModal() {
-            document.getElementById('modal').classList.remove('hidden');
+
+             <script>
+        // === MODAL TEMPLATE PROPOSAL ===
+        function openTemplateModal() {
+            document.getElementById('templateModal').classList.remove('hidden');
         }
 
-        function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
+        function closeTemplateModal() {
+            document.getElementById('templateModal').classList.add('hidden');
+        }
+
+        // === MODAL PAKET SPONSORSHIP ===
+        function openPackageModal(packageName, price) {
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
+
+            const titleEl = document.getElementById('modal-title');
+            const descEl = document.getElementById('modal-description');
+
+            if (titleEl && descEl) {
+                titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
+                descEl.innerText =
+                    `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
+            }
+
+            document.getElementById('packageModal').classList.remove('hidden');
+        }
+
+        function closePackageModal() {
+            document.getElementById('packageModal').classList.add('hidden');
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
         }
     </script>
 
