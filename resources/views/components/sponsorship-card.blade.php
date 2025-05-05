@@ -20,7 +20,7 @@
     </ul>
 
     <button class="bg-[#85BB65] hover:bg-[#68a268] font-semibold py-3 rounded-xl w-full"
-        onclick="openModal('{{ strtolower($title) }}', {{ $price }})">
+        onclick="openPackageModal('{{ strtolower($title) }}', {{ $price }})">
         Beli Sekarang
     </button>
 
