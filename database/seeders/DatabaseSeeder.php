@@ -13,17 +13,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
-
-        $this->call([
-            EventSeeder::class,
-        ]);
-        $this->call([
-            SponsorSeeder::class,
-        ]);
         $this->call([
             UserSeeder::class,
+            EventSeeder::class,
+            SponsorSeeder::class,
         ]);
     }
 }

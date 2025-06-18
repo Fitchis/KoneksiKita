@@ -5,8 +5,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Koneksi Kita - Kolaborasi Sponsorship & Mahasiswa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="/images/Logo.png" type="image/png">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="/images/LogoFix.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -32,7 +32,6 @@
     {{-- Section: Tentang kami --}}
     <section class="relative py-20 bg-cover bg-center"
         style="background-image: url('{{ asset('images/carakerjabg.png') }}')">
-        <!-- Overlay semi-transparan -->
         <div class="absolute inset-0 bg-[#EEEDED]/60"></div>
 
         <!-- Gradient bottom untuk transisi ke section bawah -->
@@ -48,10 +47,13 @@
                 Menghubungkan penyelenggara acara dan perusahaan untuk menciptakan kolaborasi yang bermanfaat bagi semua
                 pihak.
             </p>
-            <a href="{{ route('register') }}"
-                class="inline-block px-8 py-3 bg-[#004225] text-white rounded-full hover:bg-[#004225c9] transition">
-                Daftar Sekarang!
-            </a>
+            @guest
+                <a href="{{ route('register') }}"
+                    class="inline-block px-8 py-3 bg-[#004225] text-white rounded-full hover:bg-[#004225c9] transition">
+                    Daftar Sekarang!
+                </a>
+            @endguest
+
         </div>
     </section>
 
@@ -149,129 +151,161 @@
 
     <!-- Section: Komitmen -->
     <section class="bg-[#f9f9f1] py-16 px-6">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#004225] mb-4">Komitmen Kami</h2>
-            <p class="text-gray-700 mb-12">
-                Prinsip yang memandu kami dalam membangun SponsorConnect.
+        <div class="max-w-6xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+                    Komitmen Kami
+                </h2>
+                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
+                    Prinsip yang memandu kami dalam membangun SponsorConnect.
+                </p>
+            </div>
+
+            <!-- Grid Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+                <!-- Card 1: Kolaborasi -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Icon -->
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Kolaborasi</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kami percaya bahwa kerjasama yang baik akan menghasilkan manfaat bagi semua pihak.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 2: Integritas -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Icon -->
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-green-600" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244" />
+                            </svg>
+                        </div>
+
+                        <!-- Content -->
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Integritas</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kami menjunjung tinggi kejujuran dan transparansi dalam setiap aspek bisnis kami.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 3: Inovasi -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Icon -->
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z">
+                                </path>
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Inovasi</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kami terus berinovasi untuk memberikan solusi terbaik bagi pengguna kami.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Card 4: Aksesibilitas -->
+                <div class="bg-white rounded-xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <div class="flex flex-col items-center text-center">
+                        <!-- Icon -->
+                        <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-6">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+                            </svg>
+                        </div>
+                        <!-- Content -->
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Aksesibilitas</h3>
+                        <p class="text-gray-600 leading-relaxed">
+                            Kami berkomitmen untuk membuat sponsorship dapat diakses oleh semua kalangan.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pengembang -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Tim Keren di Balik Layar Website Ini</h2>
+            <p class="text-sm sm:text-base text-gray-600 mb-8">
+                Kenalin nih, para pahlawan digital yang bikin website ini jadi nyata!<br />
+                Mereka kerja bareng demi pengalaman terbaik buat kamu!
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
                 <!-- Card 1 -->
-                <div class="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center" data-aos="fade-up"
-                    data-aos-duration="800">
-                    <div class="w-12 h-12 mb-4 text-[#7FB77E]">
-                        <!-- Kolaborasi Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zm-16 0a2 2 0 114 0 2 2 0 01-4 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[#004225] mb-2">Kolaborasi</h3>
-                    <p class="text-gray-700 text-sm">
-                        Kami percaya bahwa kerjasama yang baik akan menghasilkan manfaat bagi semua pihak.
-                    </p>
+                <div class="bg-white rounded-xl shadow p-3 sm:p-4 transition hover:-translate-y-2 hover:shadow-lg duration-300"
+                    data-aos="fade-up">
+                    <img src="/images/Luthfi.png" alt="Andi Luthfi"
+                        class="w-full aspect-[3/4] object-cover rounded-lg mb-2 transition duration-300 hover:scale-105">
+                    <h3 class="text-sm sm:text-base font-semibold">Andi Luthfi M. A. A</h3>
+                    <p class="text-xs sm:text-sm text-gray-500">Web Developer</p>
                 </div>
 
                 <!-- Card 2 -->
-                <div class="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center" data-aos="fade-up"
-                    data-aos-delay="200" data-aos-duration="800">
-                    <div class="w-12 h-12 mb-4 text-[#7FB77E]">
-                        <!-- Integritas Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M13.828 10.172a4 4 0 00-5.656 0l-3.535 3.536a4 4 0 105.657 5.656l1.415-1.414M10.172 13.828a4 4 0 015.656 0l3.536 3.535a4 4 0 11-5.657 5.657l-1.414-1.415" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[#004225] mb-2">Integritas</h3>
-                    <p class="text-gray-700 text-sm">
-                        Kami menjunjung tinggi kejujuran dan transparansi dalam setiap aspek bisnis kami.
-                    </p>
+                <div class="bg-white rounded-xl shadow p-3 sm:p-4 transition hover:-translate-y-2 hover:shadow-lg duration-300"
+                    data-aos="fade-up" data-aos-delay="100">
+                    <img src="/images/Nada.png" alt="Qothrunnada"
+                        class="w-full aspect-[3/4] object-cover rounded-lg mb-2 transition duration-300 hover:scale-105">
+                    <h3 class="text-sm sm:text-base font-semibold">Qothrunnada Nahdah</h3>
+                    <p class="text-xs sm:text-sm text-gray-500">Social Media Manager</p>
                 </div>
 
                 <!-- Card 3 -->
-                <div class="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center" data-aos="fade-up"
-                    data-aos-delay="400" data-aos-duration="800">
-                    <div class="w-12 h-12 mb-4 text-[#7FB77E]">
-                        <!-- Inovasi Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M11 3a7 7 0 00-7 7c0 2.667 1.333 4 2 5l1 1v2a1 1 0 001 1h2a1 1 0 001-1v-2l1-1c.667-1 2-2.333 2-5a7 7 0 00-7-7z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 21h6" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[#004225] mb-2">Inovasi</h3>
-                    <p class="text-gray-700 text-sm">
-                        Kami terus berinovasi untuk memberikan solusi terbaik bagi pengguna kami.
-                    </p>
+                <div class="bg-white rounded-xl shadow p-3 sm:p-4 transition hover:-translate-y-2 hover:shadow-lg duration-300"
+                    data-aos="fade-up" data-aos-delay="200">
+                    <img src="/images/Dinda.jpg" alt="Adinda"
+                        class="w-full aspect-[3/4] object-cover rounded-lg mb-2 transition duration-300 hover:scale-105">
+                    <h3 class="text-sm sm:text-base font-semibold">Adinda Avu P</h3>
+                    <p class="text-xs sm:text-sm text-gray-500">UX Writer</p>
                 </div>
 
                 <!-- Card 4 -->
-                <div class="bg-white rounded-xl shadow-md p-8 flex flex-col items-center text-center"
-                    data-aos="fade-up" data-aos-delay="600" data-aos-duration="800">
-                    <div class="w-12 h-12 mb-4 text-[#7FB77E]">
-                        <!-- Aksesibilitas Icon -->
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4a2 2 0 110 4 2 2 0 010-4zm0 4v12m-4 0h8m-8-8h8" />
-                        </svg>
-                    </div>
-                    <h3 class="text-lg font-semibold text-[#004225] mb-2">Aksesibilitas</h3>
-                    <p class="text-gray-700 text-sm">
-                        Kami berkomitmen untuk membuat sponsorship dapat diakses oleh semua kalangan.
-                    </p>
+                <div class="bg-white rounded-xl shadow p-3 sm:p-4 transition hover:-translate-y-2 hover:shadow-lg duration-300"
+                    data-aos="fade-up" data-aos-delay="300">
+                    <img src="/images/Deden.jpg" alt="Dhenok"
+                        class="w-full aspect-[3/4] object-cover rounded-lg mb-2 transition duration-300 hover:scale-105">
+                    <h3 class="text-sm sm:text-base font-semibold">Dhenok Sagita N</h3>
+                    <p class="text-xs sm:text-sm text-gray-500">Product Growth Lead</p>
                 </div>
 
+                <!-- Card 5 -->
+                <div class="bg-white rounded-xl shadow p-3 sm:p-4 transition hover:-translate-y-2 hover:shadow-lg duration-300"
+                    data-aos="fade-up" data-aos-delay="400">
+                    <img src="/images/Vadia.jpg" alt="Vadia"
+                        class="w-full aspect-[3/4] object-cover rounded-lg mb-2 transition duration-300 hover:scale-105">
+                    <h3 class="text-sm sm:text-base font-semibold">Vadia Armadani</h3>
+                    <p class="text-xs sm:text-sm text-gray-500">Data Scientist</p>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- Section: Testimoni -->
-    <section class="bg-white py-12">
-        <div class="max-w-7xl mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center text-[#004225] mb-12">Kata Mereka</h2>
-
-            <!-- Swiper Container -->
-            <div class="swiper mySwiper">
-                <div class="swiper-wrapper">
-
-                    <!-- Slide 1 -->
-                    <div class="swiper-slide flex justify-center">
-                        <img src="{{ asset('images/Timg1.png') }}" alt="Testimoni 1"
-                            class="rounded-2xl object-cover
-                        w-full max-w-xs 
-                        sm:max-w-sm        
-                        md:max-w-md        
-                        lg:max-w-lg       
-                        shadow-lg" />
-                    </div>
-
-                    <!-- Slide 2 -->
-                    <div class="swiper-slide flex justify-center">
-                        <img src="{{ asset('images/Timg2.png') }}" alt="Testimoni 2"
-                            class="rounded-2xl object-cover
-                        w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
-                        shadow-lg" />
-                    </div>
-
-                    <!-- Slide 3 -->
-                    <div class="swiper-slide flex justify-center">
-                        <img src="{{ asset('images/Timg3.png') }}" alt="Testimoni 3"
-                            class="rounded-2xl object-cover
-                        w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
-                        shadow-lg" />
-                    </div>
-
-                </div>
-
-                <!-- Pagination -->
-                <div class="swiper-pagination !mt-6 !relative !bottom-0 text-center"></div>
-            </div>
-        </div>
-    </section>
+    <x-testimonials />
 
     <x-cta />
 
@@ -280,32 +314,7 @@
 
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        // Slider testimonial
-        const testimonialSwiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 12,
-            breakpoints: {
-                640: {
-                    slidesPerView: 2
-                },
-                1024: {
-                    slidesPerView: 1
-                },
-            },
-            autoHeight: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false
-            },
-        });
-    </script>
+
     <script>
         AOS.init({
             duration: 600,

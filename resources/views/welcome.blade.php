@@ -3,15 +3,39 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="google-site-verification" content="PdsQ3yEEn9fti7reaimPrl449ardKh3Le3SsTfFsdeE" />
+    <link rel="icon" href="{{ url('favicon.ico') }}?v=2" type="image/x-icon">
+
+
     <title>Koneksi Kita - Kolaborasi Sponsorship & Mahasiswa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="description"
+        content="KoneksiKita mempertemukan mahasiswa dan perusahaan dalam satu platform kolaboratif.">
+    <meta name="keywords" content="KoneksiKita, kolaborasi, mahasiswa, perusahaan, kerja sama, platform">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Koneksi Kita - Kolaborasi Sponsorship & Mahasiswa">
+    <meta property="og:description"
+        content="KoneksiKita mempertemukan mahasiswa dan perusahaan dalam satu platform kolaboratif.">
+    <meta property="og:image" content="https://koneksikita.site/images/LogoFix.png">
+    <meta property="og:url" content="https://koneksikita.site">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://koneksikita.site/images/LogoFix.png">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+        as="style">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
-    <link rel="icon" href="/images/Logo.png" type="image/png">
 
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://koneksikita.site",
+  "logo": "https://koneksikita.site/favicon.ico"
+}
+</script>
     <style>
         body {
             font-family: "Poppins", sans-serif;
@@ -28,10 +52,10 @@
 
     <main class="relative">
 
+        <!-- Section: Hero -->
         <section class="hero-section relative bg-cover bg-center"
             style="background-image: url('{{ asset('images/Welcomebg.png') }}')"
             alt="Gambar hero tentang kolaborasi mahasiswa dan industri">
-            <!-- Overlay hijau transparan -->
             <div class="absolute inset-0 bg-[#004225]/70 z-0"></div>
 
             <div
@@ -82,9 +106,10 @@
             </div>
         </section>
 
-        <!-- Section: Partner/Logo Slider -->
+        {{-- <!-- Section: Partner/Logo Slider -->
         <section class="logo-slider-partnership pt-4 bg-white">
             <div class="max-w-7xl mx-auto px-6">
+                <h2 class="text-2xl md:text-3xl font-extrabold text-center text-[#004225] mb-4 ">Mitra Kami</h2>
                 <div class="swiper logoSwiper h-16">
                     <div class="swiper-wrapper flex items-center h-full">
                         <div class="swiper-slide flex justify-center items-center h-full">
@@ -103,10 +128,10 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> --}}
 
         <!-- Section: partner dan event ideal -->
-        <section class="bg-[#EEEDED] py-16">
+        <section class="bg-[#EEEDED] py-14">
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <!-- Title -->
                 <h2 class="text-2xl md:text-3xl font-extrabold text-[#000] mb-12">
@@ -143,115 +168,153 @@
             </div>
         </section>
 
-        <!-- Section: tabswitch -->
-        <section class="bg-[#EEEDED] py-16" x-data="{ activeTab: 'mahasiswa' }">
+        <!-- Tabswitch Section -->
+        <section class="bg-[#EEEDED] py-10" x-data="{ activeTab: 'mahasiswa' }">
+            <h2 class="mx-auto px-6 text-center py-10 font-semibold text-2xl text-green-900">
+                Alur Penggunaan Platform
+            </h2>
             <div class="max-w-7xl mx-auto px-6 text-center">
                 <!-- Tab Switcher -->
                 <div class="flex justify-center mb-12">
-                    <div class="bg-gray-200 rounded-full p-1 flex">
+                    <div class="bg-gray-200 rounded-xl p-1 flex shadow-inner">
                         <button @click="activeTab = 'mahasiswa'"
-                            :class="activeTab === 'mahasiswa' ? 'bg-green-800 text-white' : 'text-green-800'"
-                            class="px-6 py-2 font-bold rounded-full transition">Mahasiswa</button>
+                            :class="activeTab === 'mahasiswa' ? 'bg-green-800 text-white' : 'text-gray-400'"
+                            class="px-8 py-2 font-semibold rounded-xl transition-all duration-300">Mahasiswa</button>
                         <button @click="activeTab = 'sponsor'"
-                            :class="activeTab === 'sponsor' ? 'bg-green-800 text-white' : 'text-green-800'"
-                            class="px-6 py-2 font-bold rounded-full transition">Sponsor</button>
+                            :class="activeTab === 'sponsor' ? 'bg-green-800 text-white' : 'text-gray-400'"
+                            class="px-8 py-2 font-semibold rounded-xl transition-all duration-300">Sponsor</button>
                     </div>
                 </div>
 
                 <!-- Steps Container -->
-                <div class="bg-white border border-green-400 rounded-2xl p-10 max-w-5xl mx-auto">
-                    <div class="flex flex-col md:flex-row items-center justify-between gap-8">
-
-                        <!-- Steps Content -->
-                        <template x-if="activeTab === 'mahasiswa'">
-                            <div class="flex w-full justify-between items-center gap-6" x-transition>
-                                <template
-                                    x-for="(step, index) in [
+                <div class="bg-white border-2 border-green-500 rounded-2xl p-10 max-w-5xl mx-auto shadow-md">
+                    <template x-if="activeTab === 'mahasiswa'">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8" x-transition>
+                            <template
+                                x-for="(step, index) in [
                         { icon: 'user-plus', title: 'Registrasi / Login', desc: 'Daftar atau masuk ke akun Anda' },
-                        { icon: 'plus-circle', title: 'Post Informasi Event', desc: 'Tambahkan detail event Anda' },
-                        { icon: 'check-circle', title: 'Selesai', desc: 'Event Anda siap menerima sponsor' }
-                      ]"
-                                    :key="index">
-                                    <div class="flex flex-col items-center text-center w-full">
-                                        <div class="bg-green-300 rounded-full p-4">
-                                            <template x-if="step.icon === 'user-plus'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M16 11v2h4v2h-4v2l-3-3 3-3zM6 8a4 4 0 118 0 4 4 0 01-8 0zm2 8h4a4 4 0 014 4v1H4v-1a4 4 0 014-4z" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="step.icon === 'plus-circle'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 2a10 10 0 100 20 10 10 0 000-20zM13 11h4a1 1 0 110 2h-4v4a1 1 0 11-2 0v-4H7a1 1 0 110-2h4V7a1 1 0 112 0v4z" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="step.icon === 'check-circle'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M12 2a10 10 0 100 20 10 10 0 000-20zM10 15l-4-4 1.41-1.41L10 12.17l6.59-6.59L18 7l-8 8z" />
-                                                </svg>
-                                            </template>
-                                        </div>
-                                        <div
-                                            class="mt-4 flex items-center justify-center w-10 h-10 bg-green-800 text-white rounded-full">
-                                            <span x-text="index+1"></span>
-                                        </div>
-                                        <h3 class="font-bold mt-2" x-text="step.title"></h3>
-                                        <p class="text-sm text-gray-600 mt-1" x-text="step.desc"></p>
+                        { icon: 'document-plus', title: 'Post Informasi Event', desc: 'Tambahkan detail event Anda' },
+                        { icon: 'check-badge', title: 'Selesai', desc: 'Event Anda siap menerima sponsor' }
+                    ]"
+                                :key="index">
+                                <div
+                                    class="flex flex-col items-center text-center relative w-full max-w-[220px] border border-green-400 rounded-lg p-6 bg-white">
+                                    <!-- Icon -->
+                                    <div class="bg-green-300 rounded-full p-3">
+                                        <template x-if="step.icon === 'user-plus'">
+                                            <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor"
+                                                stroke-width="1.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M18 9v3m1.5-1.5h-3M15 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-1a4 4 0 014-4h4" />
+                                            </svg>
+                                        </template>
+                                        <template x-if="step.icon === 'document-plus'">
+                                            <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor"
+                                                stroke-width="1.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M12 10v6m3-3H9m3-10H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V10l-6-6z" />
+                                            </svg>
+                                        </template>
+                                        <template x-if="step.icon === 'check-badge'">
+                                            <!-- Ganti dengan icon check-circle -->
+                                            <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor"
+                                                stroke-width="1.5" viewBox="0 0 24 24">
+                                                <circle cx="12" cy="12" r="10" stroke="currentColor"
+                                                    stroke-width="1.5" fill="none" />
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5" d="M9 12l2 2 4-4" />
+                                            </svg>
+                                        </template>
                                     </div>
-                                </template>
-                            </div>
-                        </template>
 
-                        <template x-if="activeTab === 'sponsor'">
-                            <div class="flex w-full justify-between items-center gap-6" x-transition>
-                                <template
-                                    x-for="(step, index) in [
-                        { icon: 'user-plus', title: 'Registrasi / Login', desc: 'Sponsor mendaftar dan login' },
-                        { icon: 'search', title: 'Cari Event', desc: 'Temukan event yang relevan' },
-                        { icon: 'handshake', title: 'Beri Sponsor', desc: 'Dukung event pilihan Anda' }
-                      ]"
-                                    :key="index">
-                                    <div class="flex flex-col items-center text-center w-full">
-                                        <div class="bg-green-300 rounded-full p-4">
-                                            <template x-if="step.icon === 'user-plus'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M16 11v2h4v2h-4v2l-3-3 3-3zM6 8a4 4 0 118 0 4 4 0 01-8 0zm2 8h4a4 4 0 014 4v1H4v-1a4 4 0 014-4z" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="step.icon === 'search'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M10 2a8 8 0 015.293 13.707l4 4a1 1 0 01-1.414 1.414l-4-4A8 8 0 1110 2zm0 2a6 6 0 100 12A6 6 0 0010 4z" />
-                                                </svg>
-                                            </template>
-                                            <template x-if="step.icon === 'handshake'">
-                                                <svg class="w-8 h-8 text-green-900" fill="currentColor"
-                                                    viewBox="0 0 24 24">
-                                                    <path
-                                                        d="M17 8h2a2 2 0 012 2v5h-2v-5h-2v7a1 1 0 01-1 1h-1v-3l-2-2-2 2v3h-1a1 1 0 01-1-1v-7h-2v5H3v-5a2 2 0 012-2h2v2l3 3 3-3v-2h2v2l3-3V8z" />
-                                                </svg>
-                                            </template>
-                                        </div>
-                                        <div
-                                            class="mt-4 flex items-center justify-center w-10 h-10 bg-green-800 text-white rounded-full">
-                                            <span x-text="index+1"></span>
-                                        </div>
-                                        <h3 class="font-bold mt-2" x-text="step.title"></h3>
-                                        <p class="text-sm text-gray-600 mt-1" x-text="step.desc"></p>
+                                    <!-- Step Number -->
+                                    <div
+                                        class="mt-4 flex items-center justify-center w-10 h-10 bg-green-800 text-white rounded-full">
+                                        <span x-text="index + 1"></span>
                                     </div>
-                                </template>
-                            </div>
-                        </template>
 
-                    </div>
+                                    <!-- Step Text -->
+                                    <h3 class="font-bold mt-4 text-lg" x-text="step.title"></h3>
+                                    <p class="text-sm text-gray-600 mt-1" x-text="step.desc"></p>
+
+                                    <!-- Arrow Right -->
+                                    <div x-show="index < 2"
+                                        class="absolute right-[-30px] top-1/2 transform -translate-y-1/2 hidden md:block">
+                                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor"
+                                            stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
+                    <template x-if="activeTab === 'sponsor'">
+                        <div class="flex flex-col md:flex-row justify-between items-center gap-8" x-transition>
+                            <template
+                                x-for="(step, index) in [
+            { icon: 'user-plus', title: 'Registrasi / Login', desc: 'Sponsor mendaftar dan login' },
+            { icon: 'magnifying-glass', title: 'Cari Event', desc: 'Temukan event yang relevan' },
+            { icon: 'handshake', title: 'Beri Sponsor', desc: 'Dukung event pilihan Anda' }
+        ]"
+                                :key="index">
+                                <div
+                                    class="flex flex-col items-center text-center relative w-full max-w-[220px] border border-green-400 rounded-lg p-6 bg-white">
+                                    <!-- Icon -->
+                                    <div class="bg-green-300 rounded-full p-3">
+                                        <template x-if="step.icon === 'user-plus'">
+                                            <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor"
+                                                stroke-width="1.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M18 9v3m1.5-1.5h-3M15 7a4 4 0 11-8 0 4 4 0 018 0zM3 21v-1a4 4 0 014-4h4" />
+                                            </svg>
+                                        </template>
+                                        <template x-if="step.icon === 'magnifying-glass'">
+                                            <svg class="w-8 h-8 text-green-900" fill="none" stroke="currentColor"
+                                                stroke-width="1.5" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z" />
+                                            </svg>
+                                        </template>
+                                        <template x-if="step.icon === 'handshake'">
+                                            <!-- Ganti dengan icon Handshake (dua tangan salaman) style outline -->
+                                            <svg class="w-8 h-8 text-green-900" xmlns="http://www.w3.org/2000/svg"
+                                                width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                class="lucide lucide-handshake-icon lucide-handshake">
+                                                <path d="m11 17 2 2a1 1 0 1 0 3-3" />
+                                                <path
+                                                    d="m14 14 2.5 2.5a1 1 0 1 0 3-3l-3.88-3.88a3 3 0 0 0-4.24 0l-.88.88a1 1 0 1 1-3-3l2.81-2.81a5.79 5.79 0 0 1 7.06-.87l.47.28a2 2 0 0 0 1.42.25L21 4" />
+                                                <path d="m21 3 1 11h-2" />
+                                                <path d="M3 3 2 14l6.5 6.5a1 1 0 1 0 3-3" />
+                                                <path d="M3 4h8" />
+                                            </svg>
+                                        </template>
+                                    </div>
+
+                                    <!-- Step Number -->
+                                    <div
+                                        class="mt-4 flex items-center justify-center w-10 h-10 bg-green-800 text-white rounded-full">
+                                        <span x-text="index + 1"></span>
+                                    </div>
+
+                                    <!-- Step Text -->
+                                    <h3 class="font-bold mt-4 text-lg" x-text="step.title"></h3>
+                                    <p class="text-sm text-gray-600 mt-1" x-text="step.desc"></p>
+
+                                    <!-- Arrow Right -->
+                                    <div x-show="index < 2"
+                                        class="absolute right-[-30px] top-1/2 transform -translate-y-1/2 hidden md:block">
+                                        <svg class="w-6 h-6 text-green-500" fill="none" stroke="currentColor"
+                                            stroke-width="2" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </template>
                 </div>
             </div>
         </section>
@@ -305,10 +368,11 @@
                 </div>
             </div>
         </section>
-        <!-- Modal -->
-        <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+        <!-- Modal package-->
+        <div id="packageModal"
+            class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
             <div class="bg-white rounded-xl p-6 w-full max-w-md text-center relative">
-                <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closeModal()">✖</button>
+                <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closePackageModal()">✖</button>
 
                 <h3 id="modal-title" class="text-xl font-bold text-[#004225] mb-2"></h3>
                 <p id="modal-description" class="text-sm mb-4"></p>
@@ -328,14 +392,15 @@
         </div>
 
         <!-- Section: Sponsorship Contact -->
-        <section class="bg-white py-6 px-4">
+        <section class="bg-white py-6 px-4 ">
             <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <div>
                     <h3 class="text-2xl font-bold text-[#004225] mb-4">Kontak <span
                             class="text-[#8BC34A]">Sponsorship</span> yang <span class="text-[#8BC34A]">jelas</span>
                     </h3>
                     <p class="text-gray-700 text-base leading-relaxed">
-                        Secure more partnerships by connecting with relevant contacts.
+                        Dapatkan lebih banyak kemitraan dengan menghubungi kontak yang relevan. Sampaikan proposal
+                        menarik dan bangun hubungan yang saling menguntungkan.
                     </p>
                 </div>
                 <div class="relative">
@@ -472,7 +537,7 @@
                     Dapatkan template proposal sponsorship yang profesional dan siap pakai untuk memudahkan Anda
                     mendapatkan sponsor untuk event Anda.
                 </p>
-                <button onclick="openModal()"
+                <button onclick="openTemplateModal()"
                     class="bg-[#85BB65] text-white text-xl font-bold px-10 py-4 rounded-2xl hover:bg-[#71a056] transition">
                     Download Template
                 </button>
@@ -480,13 +545,18 @@
             </div>
         </section>
         <!-- Template Modal -->
-        <div id="modal" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
+        <div id="templateModal"
+            class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden z-50">
             <div class="bg-[#f7f7db] p-8 rounded-2xl w-full max-w-md relative">
                 <p class="text-green-900 text-lg mb-6">
-                    Silakan isi data berikut untuk mendapatkan template proposal sponsorship. Link download akan
-                    dikirimkan ke email Anda.
+                    Silakan isi data berikut untuk mendapatkan template proposal sponsorship. Download akan
+                    Segera dilakukan.
                 </p>
-                <form id="requestForm" action="{{ route('request-template') }}" method="POST" class="space-y-4">
+                <div id="successMessage"
+                    class="hidden text-green-800 bg-green-100 border border-green-400 rounded-md px-4 py-3 mb-4 text-sm">
+                    Data berhasil dikirim! Unduhan akan dimulai otomatis.
+                </div>
+                <form id="requestForm" class="space-y-4">
                     @csrf
                     <div>
                         <input type="text" name="nama_event" placeholder="Nama Event"
@@ -515,7 +585,7 @@
                     </div>
 
                     <div class="pt-4 flex justify-end space-x-4">
-                        <button type="button" onclick="closeModal()"
+                        <button type="button" onclick="closeTemplateModal()"
                             class="bg-gray-300 text-black font-semibold text-sm rounded-md px-6 py-3 transition hover:bg-gray-400">
                             Batal
                         </button>
@@ -536,164 +606,160 @@
             </div>
         </div>
 
-        <!-- Section: Testimoni -->
-        <section class="bg-white py-12">
-            <div class="max-w-7xl mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-[#004225] mb-12">Kata Mereka</h2>
-
-                <!-- Swiper Container -->
-                <div class="swiper mySwiper">
-                    <div class="swiper-wrapper">
-
-                        <!-- Slide 1 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="{{ asset('images/Timg1.png') }}" alt="Testimoni 1"
-                                class="rounded-2xl object-cover
-                                w-full max-w-xs 
-                                sm:max-w-sm        
-                                md:max-w-md        
-                                lg:max-w-lg       
-                                shadow-lg" />
-                        </div>
-
-                        <!-- Slide 2 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="{{ asset('images/Timg2.png') }}" alt="Testimoni 2"
-                                class="rounded-2xl object-cover
-                                w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
-                                shadow-lg" />
-                        </div>
-
-                        <!-- Slide 3 -->
-                        <div class="swiper-slide flex justify-center">
-                            <img src="{{ asset('images/Timg3.png') }}" alt="Testimoni 3"
-                                class="rounded-2xl object-cover
-                                w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg
-                                shadow-lg" />
-                        </div>
-
-                    </div>
-
-                    <!-- Pagination -->
-                    <div class="swiper-pagination !mt-6 !relative !bottom-0 text-center"></div>
-                </div>
-            </div>
-        </section>
-
+        <x-testimonials />
         <x-cta />
 
     </main>
     @include('components.footer')
-    <!--  JS Modal package -->
-    <script>
-        window.onload = function() {
-            window.openModal = function(packageName, price) {
-                const formattedPrice = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(price);
-
-                const titleEl = document.getElementById('modal-title');
-                const descEl = document.getElementById('modal-description');
-
-                if (titleEl && descEl) {
-                    titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
-                    descEl.innerText =
-                        `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
-                } else {
-                    console.warn('Elemen modal tidak ditemukan');
-                }
-
-                document.getElementById('modal').classList.remove('hidden');
-            }
-
-            window.closeModal = function() {
-                document.getElementById('modal').classList.add('hidden');
-            }
-
-            function capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1);
-            }
-        };
-    </script>
-
     <!--  AlpineJS -->
     <script src="//unpkg.com/alpinejs" defer></script>
     <!-- Alpine.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-    <!-- Swiper JS -->
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
 
     <script>
-        document.getElementById('requestForm').addEventListener('submit', function() {
+        // === MODAL PAKET SPONSORSHIP ===
+        function openPackageModal(packageName, price) {
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
+
+            const titleEl = document.getElementById('modal-title');
+            const descEl = document.getElementById('modal-description');
+
+            if (titleEl && descEl) {
+                titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
+                descEl.innerText =
+                    `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
+            }
+
+            document.getElementById('packageModal').classList.remove('hidden');
+        }
+
+        function closePackageModal() {
+            document.getElementById('packageModal').classList.add('hidden');
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    </script>
+    {{-- Tabswitch --}}
+    <script>
+        function tabSwitcher() {
+            return {
+                activeTab: 'mahasiswa',
+                tabs: [{
+                        id: 'mahasiswa',
+                        label: 'Mahasiswa',
+                        steps: [{
+                                icon: 'user-plus',
+                                title: 'Registrasi / Login',
+                                desc: 'Daftar atau masuk ke akun Anda'
+                            },
+                            {
+                                icon: 'plus-circle',
+                                title: 'Post Informasi Event',
+                                desc: 'Tambahkan detail event Anda'
+                            },
+                            {
+                                icon: 'check-circle',
+                                title: 'Selesai',
+                                desc: 'Event Anda siap menerima sponsor'
+                            }
+                        ]
+                    },
+                    {
+                        id: 'sponsor',
+                        label: 'Sponsor',
+                        steps: [{
+                                icon: 'user-plus',
+                                title: 'Registrasi / Login',
+                                desc: 'Buat akun sponsor atau masuk'
+                            },
+                            {
+                                icon: 'magnifying-glass',
+                                title: 'Jelajahi Event',
+                                desc: 'Temukan event yang sesuai dengan misi Anda'
+                            },
+                            {
+                                icon: 'handshake',
+                                title: 'Beri Dukungan',
+                                desc: 'Pilih dan sponsori event pilihan Anda'
+                            }
+                        ]
+                    }
+                ],
+                switchTab(tabId) {
+                    this.activeTab = tabId;
+                },
+                init() {}
+            }
+        }
+    </script>
+
+    <script>
+        function openTemplateModal() {
+            document.getElementById('templateModal').classList.remove('hidden');
+        }
+
+        function closeTemplateModal() {
+            document.getElementById('templateModal').classList.add('hidden');
+        }
+
+        document.getElementById('requestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const formData = new FormData(form);
             const submitBtn = document.getElementById('submitBtn');
             const btnText = document.getElementById('btnText');
             const spinner = document.getElementById('loadingSpinner');
 
-            submitBtn.disabled = true;
-            btnText.textContent = 'Mengirim...';
+            btnText.textContent = 'Mengunduh...';
             spinner.classList.remove('hidden');
-        });
-    </script>
+            submitBtn.disabled = true;
 
-    <script>
-        // Slider testimonial
-        const testimonialSwiper = new Swiper('.mySwiper', {
-            slidesPerView: 1,
-            spaceBetween: 12,
-            breakpoints: {
-                640: {
-                    slidesPerView: 2
-                },
-                1024: {
-                    slidesPerView: 1
-                },
-            },
-            autoHeight: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true
-            },
-            autoplay: {
-                delay: 3000,
-                disableOnInteraction: false
-            },
-        });
+            fetch("{{ route('request-template') }}", {
+                    method: "POST",
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    body: formData
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.success && data.download_url) {
+                        // Tampilkan pesan sukses
+                        document.getElementById('successMessage').classList.remove('hidden');
 
-        // Slider logo
-        const logoSwiper = new Swiper('.logoSwiper', {
-            slidesPerView: 2,
-            spaceBetween: 4,
-            speed: 600,
-            loop: true,
-            autoplay: {
-                delay: 1000,
-                disableOnInteraction: false,
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 3
-                },
-                768: {
-                    slidesPerView: 3
-                },
-                1024: {
-                    slidesPerView: 3
-                },
-            },
-        });
-    </script>
-    <!-- Modal Script -->
-    <script>
-        function openModal() {
-            document.getElementById('modal').classList.remove('hidden');
-        }
+                        // Trigger download
+                        window.open(data.download_url, '_blank');
 
-        function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
-        }
+                        // Reset form dan UI
+                        btnText.textContent = 'Dapatkan Template';
+                        spinner.classList.add('hidden');
+                        submitBtn.disabled = false;
+                        form.reset();
+
+                        // Tutup modal setelah 3 detik
+                        setTimeout(() => {
+                            closeTemplateModal();
+                            document.getElementById('successMessage').classList.add('hidden');
+                        }, 3000);
+                    }
+
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Gagal mengirim data. Silakan coba lagi.');
+                    btnText.textContent = 'Dapatkan Template';
+                    spinner.classList.add('hidden');
+                    submitBtn.disabled = false;
+                });
+        });
     </script>
 
 </body>

@@ -9,11 +9,33 @@ use Illuminate\Support\Facades\Storage;
 
 class SponsorController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $sponsors = Sponsor::latest()->get(); // ambil semua sponsor dari DB
-        return view('katalog.sponsor', compact('sponsors'));
+        $search = $request->input('search');
+
+        if ($search) {
+            // Jika sedang mencari, tampilkan hasil pencarian tanpa mainSponsors
+            $mainSponsors = collect(); // kosongkan
+            $otherSponsors = Sponsor::where('name', 'like', "%{$search}%")
+                ->orderBy('created_at', 'desc')
+                ->paginate(6);
+        } else {
+            // Jika tidak sedang mencari, tampilkan 3 sponsor utama + sisanya
+            $mainSponsors = Sponsor::latest()->take(3)->get();
+            $otherSponsors = Sponsor::whereNotIn('id', $mainSponsors->pluck('id'))
+                ->orderBy('created_at', 'desc')
+                ->paginate(6);
+        }
+
+        return view('katalog.sponsor', [
+            'pageTitle' => 'Sponsor',
+            'mainSponsors' => $mainSponsors,
+            'otherSponsors' => $otherSponsors,
+        ]);
     }
+
+
+
 
     public function show($id)
     {
@@ -46,8 +68,8 @@ class SponsorController extends Controller
         if ($request->hasFile('logo')) {
             $logo = $request->file('logo');
             $filename = time() . '.' . $logo->getClientOriginalExtension();
-            $logo->move(public_path('sponsor_logos'), $filename);
-            $sponsor->logo = $filename; // hanya nama file, tanpa path
+            $logo->move(base_path('../public_html/sponsor_logos'), $filename);
+            $sponsor->logo = $filename;
         }
 
         $sponsor->save();

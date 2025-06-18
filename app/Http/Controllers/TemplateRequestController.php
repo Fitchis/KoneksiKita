@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\TemplateRequest; // Model yang nanti kita buat
+use App\Models\TemplateRequest;
 
 class TemplateRequestController extends Controller
 {
@@ -19,7 +19,16 @@ class TemplateRequestController extends Controller
 
         TemplateRequest::create($request->all());
 
-        // Setelah simpan, langsung redirect ke link Google Drive
-        return redirect('https://drive.google.com/your-template-link');
+        // Cek apakah file ada
+        $filePath = public_path('templates/proposal-sponsorship.pdf');
+        if (!file_exists($filePath)) {
+            return response()->json(['error' => 'File tidak ditemukan.'], 404);
+        }
+
+        // Kirim URL download sebagai response JSON
+        return response()->json([
+            'success' => true,
+            'download_url' => asset('templates/proposal-sponsorship.pdf'),
+        ]);
     }
 }

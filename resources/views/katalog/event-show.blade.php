@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{{ $event->title }} - Detail Event</title>
+    <link rel="icon" href="/images/LogoFix.png" type="image/png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
@@ -22,6 +23,13 @@
 </head>
 
 <body class="bg-[#EEEDED]">
+    @if (session('success'))
+        <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)"
+            class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50">
+            {{ session('success') }}
+        </div>
+    @endif
+
     @include('components.navbar')
 
     <!-- Breadcrumb -->
@@ -50,7 +58,7 @@
                 <h2 class="text-3xl font-bold text-[#4B5335] mb-4">{{ $event->title }}</h2>
 
 
-                 <img src="{{ $event->poster ? asset('posters/' . $event->poster) : 'https://via.placeholder.com/800x400' }}"
+                <img src="{{ $event->poster ? asset('posters/' . $event->poster) : 'https://via.placeholder.com/800x400' }}"
                     alt="{{ $event->title }}" class="w-full h-auto max-h-[450px] object-contain rounded-lg mb-6">
             </div>
 
@@ -130,7 +138,7 @@
 
         <div class="flex justify-center">
             @auth
-                @if (Auth::id() === $event->user_id)
+                @if (Auth::id() === $event->user_id || Auth::user()->role === 'superadmin')
                     <div class="flex justify-center">
                         <div x-data="{ openEdit: false }">
                             <!-- Tombol untuk membuka modal -->
@@ -144,41 +152,87 @@
                                 class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50"
                                 style="display: none;">
                                 <div @click.away="openEdit = false"
-                                    class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
-                                    <h2 class="text-lg font-bold mb-4">Edit Lokasi Acara</h2>
+                                    class="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl max-h-[90vh] overflow-auto">
+                                    <h2 class="text-lg font-bold mb-4">Edit Info Acara</h2>
 
                                     <form method="POST" action="{{ route('event.update', $event->id) }}">
                                         @csrf
                                         @method('PUT')
 
+                                        <!-- Title -->
                                         <div class="mb-4">
-                                            <label for="location"
-                                                class="block text-sm font-medium text-gray-700">Lokasi</label>
-                                            <input type="text" id="location" name="location"
-                                                value="{{ $event->location }}"
+                                            <label for="title"
+                                                class="block text-sm font-medium text-gray-700">Judul</label>
+                                            <input type="text" id="title" name="title"
+                                                value="{{ old('title', $event->title) }}"
                                                 class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
                                                 required>
                                         </div>
 
+                                        <!-- Type -->
+                                        <div class="mb-4">
+                                            <label for="type" class="block text-sm font-medium text-gray-700">Tipe
+                                                Acara</label>
+                                            <input type="text" id="type" name="type"
+                                                value="{{ old('type', $event->type) }}"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
+                                                required>
+                                        </div>
+
+                                        <!-- Date -->
+                                        <div class="mb-4">
+                                            <label for="date"
+                                                class="block text-sm font-medium text-gray-700">Tanggal</label>
+                                            <input type="date" id="date" name="date"
+                                                value="{{ old('date', \Carbon\Carbon::parse($event->date)->format('Y-m-d')) }}"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
+                                                required>
+                                        </div>
+
+                                        <!-- Participant Estimate -->
+                                        <div class="mb-4">
+                                            <label for="participant_estimate"
+                                                class="block text-sm font-medium text-gray-700">Perkiraan Peserta</label>
+                                            <input type="number" id="participant_estimate" name="participant_estimate"
+                                                min="1"
+                                                value="{{ old('participant_estimate', $event->participant_estimate) }}"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
+                                                required>
+                                        </div>
+
+                                        <!-- Location -->
+                                        <div class="mb-4">
+                                            <label for="location"
+                                                class="block text-sm font-medium text-gray-700">Lokasi</label>
+                                            <input type="text" id="location" name="location"
+                                                value="{{ old('location', $event->location) }}"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
+                                                required>
+                                        </div>
+
+                                        <!-- Description -->
+                                        <div class="mb-4">
+                                            <label for="description"
+                                                class="block text-sm font-medium text-gray-700">Deskripsi</label>
+                                            <textarea id="description" name="description" rows="4"
+                                                class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm p-2 focus:ring focus:ring-green-200 focus:outline-none"
+                                                required>{{ old('description', $event->description) }}</textarea>
+                                        </div>
+
                                         <div class="flex justify-end gap-3">
                                             <button type="button" @click="openEdit = false"
-                                                class="px-4 py-2 text-gray-600 hover:text-black">
-                                                Batal
-                                            </button>
-                                            <button type="submit" class="px-4 py-2 bg-green-600 text-white rounded-md">
-                                                Simpan
-                                            </button>
+                                                class="px-4 py-2 text-gray-600 hover:text-black">Batal</button>
+                                            <button type="submit"
+                                                class="px-4 py-2 bg-green-600 text-white rounded-md">Simpan</button>
                                         </div>
                                     </form>
                                 </div>
                             </div>
+
                         </div>
-
-
                     </div>
                 @endif
             @endauth
-
         </div>
     </section>
 
@@ -231,10 +285,10 @@
             </div>
         </div>
     </section>
-    <!-- Modal -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
+    <!-- Modal package-->
+    <div id="packageModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden z-50">
         <div class="bg-white rounded-xl p-6 w-full max-w-md text-center relative">
-            <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closeModal()">✖</button>
+            <button class="absolute top-2 right-2 text-gray-600 text-xl" onclick="closePackageModal()">✖</button>
 
             <h3 id="modal-title" class="text-xl font-bold text-[#004225] mb-2"></h3>
             <p id="modal-description" class="text-sm mb-4"></p>
@@ -252,42 +306,38 @@
             </a>
         </div>
     </div>
-
     <x-proposal-preview :proposal="$event->proposal" />
 
     @include('components.footer')
 
     <script>
-        window.onload = function() {
-            window.openModal = function(packageName, price) {
-                const formattedPrice = new Intl.NumberFormat('id-ID', {
-                    style: 'currency',
-                    currency: 'IDR',
-                    minimumFractionDigits: 0
-                }).format(price);
+        // === MODAL PAKET SPONSORSHIP ===
+        function openPackageModal(packageName, price) {
+            const formattedPrice = new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(price);
 
-                const titleEl = document.getElementById('modal-title');
-                const descEl = document.getElementById('modal-description');
+            const titleEl = document.getElementById('modal-title');
+            const descEl = document.getElementById('modal-description');
 
-                if (titleEl && descEl) {
-                    titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
-                    descEl.innerText =
-                        `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
-                } else {
-                    console.warn('Elemen modal tidak ditemukan');
-                }
-
-                document.getElementById('modal').classList.remove('hidden');
+            if (titleEl && descEl) {
+                titleEl.innerText = `Paket ${capitalize(packageName)} – ${formattedPrice}`;
+                descEl.innerText =
+                    `Silakan kirim biaya sebesar ${formattedPrice} untuk Paket ${capitalize(packageName)} ke rekening berikut ini.`;
             }
 
-            window.closeModal = function() {
-                document.getElementById('modal').classList.add('hidden');
-            }
+            document.getElementById('packageModal').classList.remove('hidden');
+        }
 
-            function capitalize(str) {
-                return str.charAt(0).toUpperCase() + str.slice(1);
-            }
-        };
+        function closePackageModal() {
+            document.getElementById('packageModal').classList.add('hidden');
+        }
+
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
     </script>
     <script>
         function copyLink() {

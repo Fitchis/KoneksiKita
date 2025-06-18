@@ -118,19 +118,62 @@
                     </div>
                     <div class="sm:col-span-2">
                         <label for="deskripsi-perusahaan" class="block text-[#0a2a0d] mb-1">Deskripsi Perusahaan</label>
-                        <textarea id="deskripsi-event" name="description" rows="5" class="input-style resize-none"></textarea>
-
+                        <textarea id="deskripsi-event" name="description" rows="5"
+                            class="p-2 block w-full rounded-md border border-[#0a2a0d]  text-sm text-[#0a2a0d] focus:outline-none focus:ring-2 focus:ring-[#0a2a0d]"
+                            placeholder="Tuliskan deskripsi dengan jelas dan detail. "></textarea>
+                    </div>
+                    <div class="max-w-xl mx-auto mb-8">
+                        <div class="bg-white rounded-xl shadow-md p-6">
+                            <h3 class="text-lg font-bold text-[#004225] mb-2">Contoh Pengisian Deskripsi Perusahaan</h3>
+                            <div class="mb-2">
+                                <span class="font-semibold">Tentang Perusahaan</span>
+                                <p class="text-gray-700 text-sm">
+                                    Dapatkan kenyamanan terbaik untuk daily outfit setiap hari di Kustomproject. Mulai
+                                    dari berbagai model pakaian, ukuran, dan material premium serta bebas ongkir siap
+                                    menjadi partner fashionmu!
+                                </p>
+                            </div>
+                            <div class="mb-2">
+                                <span class="font-semibold">Timbal-balik Kerja Sama</span>
+                                <ul class="list-disc pl-5 text-gray-700 text-sm">
+                                    <li>
+                                        <span class="font-semibold">Dukungan Dana:</span> Sponsor memberikan bantuan
+                                        finansial yang akan digunakan untuk mendukung kelancaran acara, operasional, dan
+                                        produksi materi promosi.
+                                    </li>
+                                    <li>
+                                        <span class="font-semibold">Produk atau Merchandise:</span> Sponsor dapat
+                                        memberikan produk mereka untuk digunakan sebagai hadiah, doorprize, atau bagian
+                                        dari experience dalam acara.
+                                    </li>
+                                    <li>
+                                        <span class="font-semibold">Media Promosi / Materi Branding:</span> Seperti
+                                        spanduk, banner, atau media digital yang akan ditampilkan selama acara.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Upload Poster & Proposal -->
-                <div class="mt-6 flex flex-col gap-4 sm:flex-row sm:gap-6">
-                    <div>
-                        <label class="block text-[#0a2a0d] mb-1">Upload Logo Sponsor</label>
-                        <input type="file" name="logo" class="input-style" />
-                    </div>
+                <!-- Upload Logo Brand -->
+                <div class="mt-6">
+                    <label class="block text-[#0a2a0d] mb-2 font-semibold">Upload Logo Sponsor</label>
 
+                    <label for="logo-upload"
+                        class="cursor-pointer flex items-center justify-center w-48 h-32 border-2 border-gray-300 border-dashed rounded-2xl bg-white hover:bg-gray-50 transition duration-200">
+                        <!-- Icon Upload -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-[#0a2a0d]" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2m-4-4l-4-4m0 0l-4 4m4-4v12" />
+                        </svg>
+                    </label>
+
+                    <!-- Hidden Input -->
+                    <input id="logo-upload" type="file" name="logo" class="hidden" />
                 </div>
+
 
                 <!-- Tombol Submit -->
                 <div class="mt-10 flex justify-center">

@@ -6,12 +6,13 @@ use App\Http\Controllers\EventController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\SocialiteController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\TemplateRequestController;
 
 Route::view('/', 'welcome')->name('welcome');
 
-Route::view('/cara-kerja', 'cara-kerja')->name('cara-kerja');
+Route::view('/Tentang-Kami', 'cara-kerja')->name('cara-kerja');
 
 Route::view('/papan-acara', 'papan-acara')->name('papan-acara');
 
@@ -63,9 +64,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
-// Route::get('/event/{id}/edit', [DashboardController::class, 'editEvent'])->name('event.edit');
-// Route::put('/event/{id}', [DashboardController::class, 'updateEvent'])->name('event.update');
-Route::delete('/event/{id}', [DashboardController::class, 'deleteEvent'])->name('event.delete');
+Route::get('/dashboard/event/{id}/edit', [DashboardController::class, 'editEvent'])->name('dashboard.event.edit');
+Route::put('/dashboard/event/{id}', [DashboardController::class, 'updateEvent'])->name('dashboard.event.update');
+Route::delete('/dashboard/event/{id}', [DashboardController::class, 'deleteEvent'])->name('dashboard.event.delete');
+
 // Update User
 Route::put('/user/{id}', [DashboardController::class, 'updateUser'])->name('users.update');
 Route::delete('/user/{id}', [DashboardController::class, 'destroyUser'])->name('users.destroy');
@@ -81,5 +83,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::get('auth/google', [SocialiteController::class, 'redirectToGoogle']);
+Route::get('auth/google/callback', [SocialiteController::class, 'handleGoogleCallback']);
 
 require __DIR__ . '/auth.php';

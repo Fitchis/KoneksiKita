@@ -5,14 +5,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Koneksi Kita - Kolaborasi Sponsorship & Mahasiswa</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="/images/Logo.png" type="image/png">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="/images/LogoFix.png" type="image/png">
 
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
         as="style" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet" />
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "url": "https://koneksikita.site",
+  "logo": "https://koneksikita.site/logo.png"
+}
+</script>
+
     <style>
         body {
             font-family: "Poppins", sans-serif;
@@ -50,99 +59,114 @@
             <h2 class="font-semibold text-sm sm:text-base mb-2 text-[#496538] leading-tight">
                 Selamat datang di Papan Acara (EO)
             </h2>
-            <p class="text-xs sm:text-sm text-[#85BB65] leading-snug">
+            <p class="text-xs sm:text-sm text-black leading-snug">
                 Dengan meluangkan beberapa menit untuk memposting acara atau peluang Anda di pitch board, Anda membuka
                 saluran tambahan yang unik untuk terhubung dengan brand. Mengapa pemasar merek menggunakan Pitch Board?
                 Mengapa acara dan properti menggunakan Pitch Board?
             </p>
         </div>
-
-        <!-- Button untuk tambah event hanya untuk mahasiswa dan superadmin -->
-        @if (Auth::check() && (Auth::user()->role === 'mahasiswa' || Auth::user()->role === 'superadmin'))
-            <a href="{{ route('katalog.add-event') }}">
-                <button
-                    class="mt-2 sm:mt-0 sm:ml-2 flex flex-col items-center justify-center bg-white rounded-lg shadow-md w-20 h-20 sm:w-24 sm:h-24 text-[#4B5335] font-bold text-xs sm:text-sm"
-                    type="button">
-                    <div class="bg-[#E6EFC2] rounded-full w-8 h-8 flex items-center justify-center mb-1 sm:mb-2">
-                        <i class="fas fa-plus text-lg sm:text-xl"></i>
-                    </div>
-                    Tambah Event
-                </button>
-            </a>
-        @else
-            <!-- Pop-up info jika user belum login atau bukan mahasiswa atau superadmin -->
-            <div id="popup" class="fixed inset-0 flex items-center justify-center bg-gray-500 bg-opacity-50 z-50">
-                <div class="bg-white p-6 rounded-lg shadow-md max-w-md w-full">
-                    <h3 class="text-xl font-semibold text-[#4B5335]">Info</h3>
-                    <p class="text-sm text-gray-600 mt-2">
-                        Anda harus login sebagai mahasiswa atau superadmin untuk dapat menambahkan event. <br>
-                        Silakan login terlebih dahulu.
-                    </p>
-                    <div class="mt-4 flex justify-end">
-                        <a href="{{ route('login') }}">
-                            <button class="bg-[#85BB65] text-white px-4 py-2 rounded-lg">
-                                Login
-                            </button>
-                        </a>
-                        <button onclick="closePopup()" class="ml-4 text-gray-500">
-                            Tutup
-                        </button>
-                    </div>
-                </div>
-            </div>
-        @endif
+        @auth
+            @if (auth()->user()->role === 'superadmin' || auth()->user()->role === 'mahasiswa')
+                <a href="{{ route('katalog.add-event') }}">
+                    <button
+                        class="mt-2 sm:mt-0 sm:ml-2 flex flex-col items-center justify-center bg-white rounded-lg shadow-md w-20 h-20 sm:w-24 sm:h-24 text-[#4B5335] font-bold text-xs sm:text-sm"
+                        type="button">
+                        <div class="bg-[#E6EFC2] rounded-full w-8 h-8 flex items-center justify-center mb-1 sm:mb-2">
+                            <i class="fas fa-plus text-lg sm:text-xl"></i>
+                        </div>
+                        Tambah Event
+                    </button>
+                </a>
+            @endif
+        @endauth
 
     </div>
 
     <!-- Upcoming Events Section -->
-    <section class="pt-6 px-6 min-h-screen">
-        <div class="max-w-5xl mx-auto">
-            <h1 class="text-3xl font-bold text-[#496538] mb-8 text-start">Event yang akan datang</h1>
+    @if (request('search'))
+        <!-- 🔍 Hasil Pencarian -->
+        <section class="pt-6 px-6 min-h-screen">
+            <div class="max-w-5xl mx-auto">
+                <h1 class="text-2xl font-bold text-[#496538] mb-4">Hasil pencarian untuk: "{{ request('search') }}"</h1>
+                <a href="{{ route('katalog.event') }}"
+                    class="inline-flex items-center gap-2 mb-4 text-sm text-white bg-[#496538] px-4 py-2 rounded-full hover:bg-[#3a4e2b] transition">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+                @if ($otherEvents->count())
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach ($otherEvents as $event)
+                            @include('components.event-card', ['event' => $event])
+                        @endforeach
+                    </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                @foreach ($events as $event)
-                    <div
-                        class="bg-white rounded-3xl  shadow-lg p-6 flex flex-col hover:shadow-xl transition-shadow duration-300 ease-in-out">
-                        <!-- Gambar event -->
-                        <img src="{{ $event->poster ? asset('posters/' . $event->poster) : 'https://via.placeholder.com/400x200' }}"
-                            alt="{{ $event->title }}" class="rounded-md mb-4 w-full h-48 object-contain">
-
-
-                        <!-- Nama event -->
-                        <h2 class="text-xl font-semibold text-[#0a3a0d] mb-2 truncate hover:text-[#4B5335]">
-                            {{ $event->title }}</h2>
-
-                        <!-- Deskripsi singkat -->
-                        <p class="text-gray-700 text-sm mb-2 flex-1">
-                            {{ Str::limit($event->description, 100) }}
-                        </p>
-
-                        <!-- Lokasi dan participant_estimate -->
-                        <div class="flex justify-between items-center text-sm text-gray-600 mt-2 mb-4">
-                            <!-- Lokasi Event dengan ikon -->
-                            <p class="flex items-center space-x-2">
-                                <i class="fas fa-map-marker-alt text-[#4B5335]"></i>
-                                <span>{{ $event->location }}</span>
-                            </p>
-
-                            <!-- Perkiraan jumlah peserta dengan ikon -->
-                            <p class="flex items-center space-x-2">
-                                <i class="fas fa-users text-[#4B5335]"></i>
-                                <span>{{ $event->participant_estimate }} peserta</span>
-                            </p>
+                    <!-- Pagination -->
+                    <div class="mt-8 flex justify-center">
+                        {{ $otherEvents->withQueryString()->links('vendor.pagination.tailwind') }}
+                    </div>
+                @else
+                    <p class="text-gray-600 text-sm">Tidak ada hasil ditemukan untuk pencarian tersebut.</p>
+                @endif
+            </div>
+        </section>
+    @else
+        <!-- ✅ Tampilan Normal -->
+        <section class="pt-6 px-6 ">
+            <div class="max-w-5xl mx-auto">
+                <h1 class="text-3xl font-bold text-[#496538] mb-8 text-start">Event yang akan datang</h1>
+                @foreach ($events as $month => $eventGroup)
+                    <div class="mb-10">
+                        <h3 class="text-lg sm:text-xl font-bold text-[#4B5335] mb-4 border-b pb-2 border-[#C8D6B9]">
+                            Tahun {{ $month }}
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                            @foreach ($eventGroup as $event)
+                                @include('components.event-card', ['event' => $event])
+                            @endforeach
                         </div>
-
-                        <!-- Link untuk melihat detail event -->
-                        <a href="{{ route('event.show', $event->id) }}"
-                            class="text-green-700 font-semibold mt-auto inline-block hover:text-green-500 transition-colors duration-200">
-                            Lihat Detail &rarr;
-                        </a>
                     </div>
                 @endforeach
             </div>
-        </div>
-    </section>
+        </section>
 
+        <section class="pt-10 px-6">
+            <div class="max-w-5xl mx-auto">
+                <div class="flex justify-between items-center mb-6">
+                    <h2 class="text-2xl font-bold text-[#496538]">Event Lainnya</h2>
+
+                    <form action="{{ route('katalog.event') }}" method="GET" class="relative">
+                        <input type="text" name="search" placeholder="Search Events" value="{{ request('search') }}"
+                            class="pl-4 pr-10 py-2 text-sm rounded-full border border-gray-300 focus:outline-none focus:ring focus:ring-green-200">
+                        <button type="submit"
+                            class="absolute right-2 top-1/2 transform -translate-y-1/2 text-[#4B5335]">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                @foreach ($otherEvents as $month => $eventGroup)
+                    <div class="mb-10">
+                        <h3 class="text-lg sm:text-xl font-bold text-[#4B5335] mb-4 border-b pb-2 border-[#C8D6B9]">
+                            Tahun {{ $month }}
+                        </h3>
+                        <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                            @foreach ($eventGroup as $event)
+                                @include('components.event-card', ['event' => $event])
+                            @endforeach
+                        </div>
+                    </div>
+                @endforeach
+
+
+                <!-- Pagination -->
+                <div class="mt-8 flex justify-center">
+                    {{ $otherEvents->links('vendor.pagination.tailwind') }}
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <x-footer />
 
     <script>
         function closePopup() {

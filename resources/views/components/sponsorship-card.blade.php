@@ -1,7 +1,10 @@
 @props(['title', 'desc', 'price', 'oldPrice', 'features', 'package'])
 
-<div class="bg-[#EEEDED] rounded-2xl border border-green-300 p-8 shadow-md hover:shadow-lg transition flex flex-col">
-    <h3 class="text-xl font-bold text-[#004225] mb-2">PAKET <span>{{ strtoupper($title) }}</span></h3>
+<div
+    class="bg-[#FFFFFF] rounded-2xl border border-green-300 p-8 shadow-md hover:shadow-lg transition flex flex-col max-w-sm w-full mx-auto">
+
+    <h3 class="text-xl font-bold text-[#004225] mb-2">PAKET <span class="text-[#FFB000]">{{ strtoupper($title) }}</span>
+    </h3>
     <p class="text-gray-600 mb-6 text-sm">{{ $desc }}</p>
     <hr class="border-green-300 mb-6">
 
@@ -20,10 +23,7 @@
     </ul>
 
     <button class="bg-[#85BB65] hover:bg-[#68a268] font-semibold py-3 rounded-xl w-full"
-        onclick="openModal('{{ strtolower($title) }}', {{ $price }})">
+        onclick="openPackageModal('{{ strtolower($title) }}', {{ $price }})">
         Beli Sekarang
     </button>
-
-
-
 </div>

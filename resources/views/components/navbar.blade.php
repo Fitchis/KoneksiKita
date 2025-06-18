@@ -2,7 +2,7 @@
     <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative" aria-label="Primary Navigation">
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-            <img src="{{ asset('images/Logo.png') }}" alt="Logo" class="w-10 h-10 object-contain" />
+            <img src="{{ asset('images/LogoFix.png') }}" alt="Logo" class="w-10 h-10 object-contain" />
             <div class="text-white text-xs font-semibold leading-tight">
                 <div>Koneksikita</div>
                 <div class="text-[8px] font-normal">Dari Ide ke Aksi</div>
@@ -173,6 +173,7 @@
 
     <!-- Scripts -->
     <script>
+        // === TOGGLE DROPDOWN ===
         function toggleDropdown() {
             const dropdown = document.getElementById('dropdown-menu');
             dropdown.classList.toggle('opacity-0');
@@ -180,24 +181,30 @@
             dropdown.classList.toggle('pointer-events-none');
         }
 
+        // === TOGGLE MOBILE MENU ===
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenu.classList.toggle('hidden');
         }
 
+        // === TOGGLE MOBILE USER DROPDOWN ===
         function toggleMobileDropdown() {
             const dropdown = document.getElementById('mobile-user-dropdown');
             dropdown.classList.toggle('hidden');
         }
 
-
+        // === CLOSE DROPDOWN IF CLICK OUTSIDE ===
         window.addEventListener('click', function(event) {
             const dropdown = document.getElementById('dropdown-menu');
             const button = document.querySelector(
-                'button[aria-label="Toggle dropdown"], button[aria-label="Toggle menu"]');
-            if (!dropdown.contains(event.target) && !button.contains(event.target)) {
+                'button[aria-label="Toggle dropdown"], button[aria-label="Toggle menu"]'
+            );
+
+            // Check if dropdown and button are not null
+            if (dropdown && button && !dropdown.contains(event.target) && !button.contains(event.target)) {
                 dropdown.classList.add('opacity-0', 'scale-95', 'pointer-events-none');
             }
         });
     </script>
+
 </header>

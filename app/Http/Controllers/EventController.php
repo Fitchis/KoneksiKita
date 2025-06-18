@@ -6,18 +6,58 @@ use App\Models\Event;
 use Illuminate\Http\Request;
 use App\Services\SupabaseService;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class EventController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        // Ambil semua event dari database
-        $events = Event::all();
+        $now = Carbon::now();
+        $search = $request->input('search');
 
-        // Kirimkan data ke view
+        if ($search) {
+            $events = collect();
+
+            $otherEvents = Event::where(function ($query) use ($search) {
+                $query->where('title', 'like', "%{$search}%")
+                    ->orWhere('location', 'like', "%{$search}%")
+                    ->orWhere('description', 'like', "%{$search}%");
+            })
+                ->orderBy('date', 'desc')
+                ->paginate(6);
+
+            // Kelompokkan berdasarkan tahun
+            $groupedOtherEvents = $otherEvents->getCollection()->groupBy(function ($event) {
+                return Carbon::parse($event->date)->year;
+            });
+            $otherEvents->setCollection($groupedOtherEvents);
+        } else {
+            // Upcoming events: tanggal >= hari ini
+            $upcomingEvents = Event::where('date', '>=', $now)
+                ->orderBy('date', 'asc')
+                ->take(3)
+                ->get();
+
+            // Kelompokkan upcoming event berdasarkan tahun
+            $events = $upcomingEvents->groupBy(function ($event) {
+                return Carbon::parse($event->date)->year;
+            });
+
+            // Other events: tanggal < hari ini
+            $otherEvents = Event::where('date', '<', $now)
+                ->orderBy('date', 'desc')
+                ->paginate(6);
+
+            $groupedOtherEvents = $otherEvents->getCollection()->groupBy(function ($event) {
+                return Carbon::parse($event->date)->year;
+            });
+            $otherEvents->setCollection($groupedOtherEvents);
+        }
+
         return view('katalog.event', [
             'pageTitle' => 'Event',
-            'events' => $events
+            'events' => $events,
+            'otherEvents' => $otherEvents,
         ]);
     }
 
@@ -95,12 +135,17 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
 
         $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'type' => 'required|string|max:100',
+            'date' => 'required|date',
+            'participant_estimate' => 'required|integer|min:1',
             'location' => 'required|string|max:255',
+            'description' => 'required|string',
         ]);
 
         $event->update($validated);
 
-        return redirect()->route('katalog.event')->with('success', 'Lokasi event berhasil diperbarui!');
+        return redirect()->route('event.show', $event->id)->with('success', 'Event berhasil diperbarui!');
     }
     public function destroy($id)
     {

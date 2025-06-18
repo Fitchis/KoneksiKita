@@ -19,7 +19,6 @@ class EventSeeder extends Seeder
             return;
         }
 
-        // Data event contoh
         $events = [
             [
                 'title' => 'Seminar Nasional Kewirausahaan',

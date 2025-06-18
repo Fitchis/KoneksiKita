@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <title>Akun Saya</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="icon" href="/images/Logo.png" type="image/png">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="icon" href="/images/LogoFix.png" type="image/png">
 
 </head>
 
@@ -14,7 +14,7 @@
     @include('components.navbar')
 
     <div
-        class="max-w-5xl mx-auto m-2 bg-white p-10 rounded-3xl shadow-md flex flex-col lg:flex-row justify-between items-start">
+        class="max-w-5xl mx-auto m-2 min-h-screen bg-white p-10 rounded-3xl shadow-md flex flex-col lg:flex-row justify-between items-start">
 
         <!-- Form Update Akun -->
         <form method="POST" action="{{ route('akun.update') }}" class="w-full lg:w-1/2 mb-8 lg:mb-0">
@@ -133,7 +133,7 @@
             reader.onload = function() {
                 const preview = document.getElementById('preview');
                 preview.src = reader.result;
-                preview.style.display = 'block'; 
+                preview.style.display = 'block';
                 document.getElementById('save-button').style.display = 'inline-block';
             };
 
