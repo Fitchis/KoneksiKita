@@ -41,7 +41,7 @@ bash
 🚀 Menjalankan Secara Lokal
 Clone repo:
 
-git clone https://github.com/your-username/koneksikita.git
+git clone https://github.com/Fitchis/koneksikita.git
 cd koneksikita
 
 Install dependensi:
